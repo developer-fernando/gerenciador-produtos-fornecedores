@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação autônoma, rodada 3) |
+| **Status** | Concluído (todos os tickets; suíte verde) |
 | **Funcionalidade** | 01-empresas-api |
 | **PRD relacionado** | [prd.md](./prd.md) · [validation.md](./validation.md) |
 
@@ -76,17 +76,17 @@ Feature tests (Pest + `RefreshDatabase`, MySQL de testes) — [docs/14](../../do
 - [x] **01-T7** — `EmpresaService`: exclusão física — permitida **apenas** quando a empresa está **excluída logicamente** (senão 409 `registro_nao_excluido`) **e** sem produto vinculado, incl. excluído (senão 409 `empresa_com_produtos_vinculados`) — verificado via tinker (3 cenários).
 - [x] **01-T8** — Padronização de erros de regra de negócio: `RegraDeNegocioException` com método `render()` retornando `{message, code}` + status (aproveita o `shouldRenderJsonWhen` já existente no `bootstrap/app.php`); factories `registroNaoExcluido`/`empresaComProdutosVinculados`/`registroExcluido` (verificado via tinker: 409 + JSON).
 - [x] **01-T9** — `EmpresaController` (fino) + `routes/api.php` + **registro do grupo `api` no `bootstrap/app.php`** (`withRouting(api: ...)`); smoke test OK (9 rotas; GET 200, POST 201 com payload padronizado).
-- [ ] **01-T10** — Testes de feature cobrindo todas as regras acima (inclui estado Inativa+Excluída e revalidação 409 em empresa já excluída).
+- [x] **01-T10** — Testes de feature cobrindo todas as regras acima (14 casos, 62 asserções) — inclui estado Inativa+Excluída e revalidação 409 em empresa já excluída.
 
 ## 8. Definition of Done
 
-- [ ] Todos os tickets concluídos.
-- [ ] Endpoints respondem conforme o contrato ([docs/15](../../docs/15-contrato-api.md)); respostas padronizadas (Resource + `acoes_permitidas`; erros 422/409).
-- [ ] Validação server-side completa; mensagens em português, sem detalhes internos.
-- [ ] Cascatas transacionais corretas (inativar/excluir/restaurar) e bloqueio de exclusão física.
-- [ ] `php artisan test` verde (incluindo os testes da 01 e os da 00).
-- [ ] Sem credenciais/segredos no código.
-- [ ] Critérios de aceite do PRD atendidos.
+- [x] Todos os tickets concluídos.
+- [x] Endpoints respondem conforme o contrato ([docs/15](../../docs/15-contrato-api.md)); respostas padronizadas (Resource + `acoes_permitidas`; erros 422/409).
+- [x] Validação server-side completa; mensagens em português, sem detalhes internos.
+- [x] Cascatas transacionais corretas (inativar/excluir/restaurar) e bloqueio de exclusão física.
+- [x] `php artisan test` verde (23 passed / 78 asserções, incluindo 01 e 00).
+- [x] Sem credenciais/segredos no código.
+- [x] Critérios de aceite do PRD atendidos.
 
 ## 9. Decisões e riscos locais
 

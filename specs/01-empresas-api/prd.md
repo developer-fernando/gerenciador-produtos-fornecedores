@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação autônoma, rodada 3) |
+| **Status** | Concluído |
 | **Funcionalidade** | 01-empresas-api |
 | **Spec relacionada** | [spec.md](./spec.md) · [validation.md](./validation.md) |
 
@@ -67,14 +67,14 @@ Origem em [docs/02-regras-de-negocio.md](../../docs/02-regras-de-negocio.md):
 
 ## 8. Critérios de aceite
 
-- [ ] `POST /api/empresas` cria empresa válida (201) e rejeita dados inválidos (422 com erro por campo).
-- [ ] Unicidade de CNPJ e e-mail é barrada **inclusive** contra registros excluídos logicamente; na edição, ignora o próprio registro.
-- [ ] CNPJ inválido (dígitos verificadores) é rejeitado.
-- [ ] `PATCH /api/empresas/{id}/inativar` inativa a empresa **e** seus produtos; `reativar` **não** reativa os produtos.
-- [ ] `DELETE /api/empresas/{id}` exclui logicamente a empresa e seus produtos (com `excluido_em_cascata = true`); `restaurar` traz de volta apenas esses produtos, mantendo excluídos os que já estavam excluídos individualmente.
-- [ ] `DELETE /api/empresas/{id}/forcar` retorna **409** (`registro_nao_excluido`) se a empresa **não** estiver excluída logicamente, e **409** (`empresa_com_produtos_vinculados`) se houver qualquer produto vinculado (mesmo excluído); remove fisicamente **apenas** quando a empresa está excluída logicamente **e** sem produtos vinculados.
-- [ ] `GET /api/empresas` retorna paginado (10/página), com filtros por nome (parcial), status e excluídos (somente excluídos); por padrão, não retorna excluídos.
-- [ ] As respostas seguem o formato padronizado (Resource + `acoes_permitidas`; erros 422/409).
-- [ ] Uma empresa excluída logicamente retorna `acoes_permitidas` com `inativar`/`reativar` = false; tentar inativar/reativar/editar uma empresa já excluída retorna **409** (servidor revalida).
-- [ ] Os endpoints estão acessíveis (grupo de API registrado no `bootstrap/app.php`; não retornam 404 por rota ausente).
-- [ ] Todos os testes de feature da 01 passam (`php artisan test`).
+- [x] `POST /api/empresas` cria empresa válida (201) e rejeita dados inválidos (422 com erro por campo).
+- [x] Unicidade de CNPJ e e-mail é barrada **inclusive** contra registros excluídos logicamente; na edição, ignora o próprio registro.
+- [x] CNPJ inválido (dígitos verificadores) é rejeitado.
+- [x] `PATCH /api/empresas/{id}/inativar` inativa a empresa **e** seus produtos; `reativar` **não** reativa os produtos.
+- [x] `DELETE /api/empresas/{id}` exclui logicamente a empresa e seus produtos (com `excluido_em_cascata = true`); `restaurar` traz de volta apenas esses produtos, mantendo excluídos os que já estavam excluídos individualmente.
+- [x] `DELETE /api/empresas/{id}/forcar` retorna **409** (`registro_nao_excluido`) se a empresa **não** estiver excluída logicamente, e **409** (`empresa_com_produtos_vinculados`) se houver qualquer produto vinculado (mesmo excluído); remove fisicamente **apenas** quando a empresa está excluída logicamente **e** sem produtos vinculados.
+- [x] `GET /api/empresas` retorna paginado (10/página), com filtros por nome (parcial), status e excluídos (somente excluídos); por padrão, não retorna excluídos.
+- [x] As respostas seguem o formato padronizado (Resource + `acoes_permitidas`; erros 422/409).
+- [x] Uma empresa excluída logicamente retorna `acoes_permitidas` com `inativar`/`reativar` = false; tentar inativar/reativar/editar uma empresa já excluída retorna **409** (servidor revalida).
+- [x] Os endpoints estão acessíveis (grupo de API registrado no `bootstrap/app.php`; não retornam 404 por rota ausente).
+- [x] Todos os testes de feature da 01 passam (`php artisan test`).

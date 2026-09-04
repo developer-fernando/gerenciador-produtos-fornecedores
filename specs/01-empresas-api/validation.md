@@ -52,6 +52,15 @@ Nenhuma nesta fase (pré-implementação) — tudo verificável por grep/leitura
 
 O verificador notou que as tabelas-resumo do `docs/15` descrevem o `forçar` de forma enxuta (só "409 se houver produtos"), omitindo a precondição de já estar excluída — que consta na tabela de derivação de `acoes_permitidas` e no `docs/02 §2 (regra 8)`. É imprecisão de redação do `docs/15`, não da Spec; anotado para eventual ajuste do doc.
 
+## Camada executável (conclusão)
+
+Após a aprovação estática, a implementação foi validada por **ground truth executável**:
+- **Testes unitários:** `CnpjValido` (dígitos verificadores) — 3 casos.
+- **Testes de feature (Pest + `RefreshDatabase`, MySQL de testes):** API de Empresas — **14 casos / 62 asserções**, cobrindo criação/validação (422 por campo), CNPJ inválido, unicidade incluindo excluídos (com ignore na edição), inativar/reativar (cascata e não-reativação), exclusão lógica em cascata + restauração seletiva, exclusão física (dupla condição, 409 `registro_nao_excluido` / `empresa_com_produtos_vinculados`), revalidação 409 em empresa excluída, e listagem (paginação 10 + filtros nome/status/excluídos).
+- **Suíte completa:** `php artisan test` → **23 passed / 78 asserções** (01 + 00), sem regressões.
+
+Todos os tickets (01-T1…01-T10) concluídos e o DoD atendido. **Funcionalidade 01 concluída.**
+
 ## Histórico de rodadas
 
 | Rodada | Veredito | Bloqueantes | Observação |
