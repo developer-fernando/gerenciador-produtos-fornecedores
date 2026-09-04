@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação estática — pronto para implementar) |
+| **Status** | Concluído (59 testes verdes; E2E via Docker conferido; logo real no fechamento) |
 | **Funcionalidade** | 05-front-produtos |
 | **PRD relacionado** | [prd.md](./prd.md) · [validation.md](./validation.md) |
 
@@ -101,15 +101,15 @@ Camada executável (Vitest + RTL + user-event + MSW):
 - [x] **05-T3** — Produtos listagem: `ProdutosPage`+`ProdutosFiltros`+`ProdutosTabela` (empresa, preço formatado BRL, badge, código), paginação, filtros, estados — _6 testes via MSW (loading/vazio/erro/paginação/filtros/badge) verdes; verificado no navegador com dados reais (23 produtos). Invalidação será exercitada no 05-T5._
 - [x] **05-T4** — Produto formulário: `ProdutoFormModal` + `EmpresaAptaSelect` (todas as aptas via iteração de páginas; `empresaVinculada` na edição; vazio bloqueia submit), validação por campo + 422, trocar empresa na edição; botão "Novo produto" — _3 testes do seletor (>10 aptas, empresaVinculada, vazio) + 3 do form (422 codigo/preço, validação local, sucesso) verdes; verificado no navegador (seletor mostra só as 5 aptas, exclui a inativa). 51 testes no total._
 - [x] **05-T5** — Produto ações de ciclo de vida: `AcoesProduto` condicional + inativar/reativar/excluir/restaurar/forcar, confirmações/avisos, 409 (`empresa_excluida`) e **422 (`empresa_inativa_ou_excluida`) no reativar** — _7 testes de ações (4 condicionais + irreversível + 409 + 422) e invalidação na página verdes; 59 testes no total. Verificado no navegador: ativo/apta → Editar/Inativar/Excluir; empresa inativa (Carvalho) → sem Editar; excluídos com empresa excluída → só Excluir definitivamente; diálogo de inativar e aviso de irreversibilidade._
-- [ ] **05-T6** — Validação executável final + verificação manual: `build`+`lint`+`test` verdes; checklist manual (navegação, seletor apto, fluxo E2E via Docker) registrado no `validation.md` — _DoD atendido._
+- [x] **05-T6** — Validação executável final + verificação manual: `build`+`lint`+`test` (59) verdes; E2E via Docker (criar→editar vínculo→inativar→excluir→restaurar) e seletor apto conferidos no navegador; checklist no `validation.md` — _DoD atendido._
 
 ## 8. Definition of Done
 
-- [ ] Todos os tickets concluídos.
-- [ ] Regras/validações de UX conforme a origem (seletor apto, ações condicionais, avisos, filtros, invalidação).
-- [ ] Testes Vitest previstos passando; `npm run build` e `npm run lint` verdes.
-- [ ] Sem segredos no bundle; sem `dangerouslySetInnerHTML`; erros sem detalhes internos.
-- [ ] Critérios de aceite do PRD atendidos (manuais restantes no `validation.md`).
+- [x] Todos os tickets concluídos.
+- [x] Regras/validações de UX conforme a origem (seletor apto, ações condicionais, avisos, filtros, invalidação).
+- [x] Testes Vitest previstos passando (59); `npm run build` e `npm run lint` verdes.
+- [x] Sem segredos no bundle; sem `dangerouslySetInnerHTML`; erros sem detalhes internos.
+- [x] Critérios de aceite do PRD atendidos (logo real permanece no fechamento — `validation.md`).
 
 ## 9. Decisões e riscos locais
 

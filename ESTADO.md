@@ -8,20 +8,20 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase atual** | Front-end |
-| **Feature em andamento** | 05 — Front: Produtos (Spec aprovada; implementando) |
-| **Próxima feature** | — (05 é a última do recorte) |
+| **Fase atual** | Fechamento da entrega |
+| **Feature em andamento** | — (05 concluída) |
+| **Próxima feature** | — (recorte das features de produto encerrado) |
 | **Backend** | ✅ Completo e no ar (features 00–03; 45 testes) |
-| **Último commit relevante** | `9a975a1`+ — 05-T1..T4; 05-T5 neste commit |
+| **Último commit relevante** | `38ca0f3`+ — 05-T1..T5; 05-T6 neste commit |
 | **Atualizado em** | 2026-09-04 |
 
 ## Onde paramos
 
-Backend (00–03) e front de Empresas (04) concluídos, testados (45 + 39 testes) e **rodando integrados** via Docker (verificados com dados reais). Camada de continuidade entre LLMs concluída. A **Feature 05 (Front: Produtos)** teve PRD + Spec **aprovados** na validação autônoma (2 rodadas; F1 = seletor de empresa apta que truncava em 10 empresas, corrigido). Implementação em andamento: **05-T1..T5** feitos.
+Backend (00–03), front de Empresas (04) e front de Produtos (05) concluídos. Feature 05: 59 testes Vitest, build/lint verdes, E2E via Docker conferido (criar→editar vínculo→inativar→excluir→restaurar; seletor só com empresas aptas). Recorte das funcionalidades de produto **encerrado**.
 
 ## Próximo passo
 
-Implementar a **Feature 05** pelos tickets de [`specs/05-front-produtos/spec.md §7`](specs/05-front-produtos/spec.md). Feito: **05-T1** (navegação), **05-T2** (dados de produtos + `AcoesPermitidas` em `shared/`), **05-T3** (listagem), **05-T4** (formulário + seletor de empresa apta), **05-T5** (ações de ciclo de vida: `AcoesProduto` condicional, confirmações, 409/422, invalidação; 59 testes; verificado no navegador). **Próximo: 05-T6** (validação executável final + verificação manual: `build`+`lint`+`test` verdes; checklist E2E no `validation.md`). Commit por ticket `[05-TX]`; atualizar este `ESTADO.md` + checkbox a cada um. Após a 05: fechamento (README de execução, foco de teclado, logo real).
+**Fechamento da entrega** (fora do recorte 00–05): revisar o README de execução (clone-and-run + estrutura), substituir o fallback textual da logo pelo arquivo real quando for fornecido. O foco de teclado em Produtos foi conferido no 05-T6 (`:focus-visible` visível no Tab).
 
 ## Progresso
 
@@ -34,7 +34,7 @@ Espelha a coluna **Status** do [recorte em `specs/README.md`](specs/README.md#re
 | 02 | Produtos (API) | ✅ Concluído |
 | 03 | Correções de back-end (hardening) | ✅ Concluído |
 | 04 | Front — base + Empresas | ✅ Concluído |
-| 05 | Front — Produtos | 🔄 Em andamento |
+| 05 | Front — Produtos | ✅ Concluído |
 | — | Processo — Continuidade entre LLMs | ✅ Concluído |
 
 ## Como retomar

@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação estática — pronto para implementar) |
+| **Status** | Concluído (implementação validada; logo real no fechamento) |
 | **Funcionalidade** | 05-front-produtos |
 | **Spec relacionada** | [spec.md](./spec.md) · [validation.md](./validation.md) |
 
@@ -68,12 +68,12 @@ A UI reflete o estado e o `acoes_permitidas`; o **servidor revalida** (a UI não
 
 ## 8. Critérios de aceite
 
-- [ ] `GET /api/produtos` é consumido: listagem paginada (10/pág), com navegação entre páginas.
-- [ ] Filtros por nome, status e excluídos funcionam e combinam; sem o filtro de excluídos, nenhum excluído aparece.
-- [ ] O formulário de produto oferece **apenas empresas aptas** no seletor (via `GET /api/empresas?status=Ativo`).
-- [ ] Criar produto: erros 422 aparecem **no campo** (ex.: `codigo_interno`, `preco`); sucesso fecha o form e a lista reflete sem reload.
-- [ ] Editar permite **trocar a empresa** para outra apta; erros mapeados por campo.
-- [ ] Cada linha exibe **apenas** as ações de `acoes_permitidas`; a **empresa vinculada** e o **preço formatado** aparecem.
-- [ ] Excluir definitivamente exige **confirmação** com aviso de irreversibilidade; um 409 (ex.: restaurar com `empresa_excluida`) é exibido em linguagem compreensível.
-- [ ] Há **navegação** entre Empresas e Produtos; estados de loading/vazio/erro e **feedback** por ação.
-- [ ] `npm run build`, `npm run test` (Vitest) e `npm run lint` verdes.
+- [x] `GET /api/produtos` é consumido: listagem paginada (10/pág), com navegação entre páginas.
+- [x] Filtros por nome, status e excluídos funcionam e combinam; sem o filtro de excluídos, nenhum excluído aparece.
+- [x] O formulário de produto oferece **apenas empresas aptas** no seletor (via `GET /api/empresas?status=Ativo`).
+- [x] Criar produto: erros 422 aparecem **no campo** (ex.: `codigo_interno`, `preco`); sucesso fecha o form e a lista reflete sem reload.
+- [x] Editar permite **trocar a empresa** para outra apta; erros mapeados por campo.
+- [x] Cada linha exibe **apenas** as ações de `acoes_permitidas`; a **empresa vinculada** e o **preço formatado** aparecem.
+- [x] Excluir definitivamente exige **confirmação** com aviso de irreversibilidade; um 409 (ex.: restaurar com `empresa_excluida`) é exibido em linguagem compreensível.
+- [x] Há **navegação** entre Empresas e Produtos; estados de loading/vazio/erro e **feedback** por ação.
+- [x] `npm run build`, `npm run test` (Vitest, 59) e `npm run lint` verdes.
