@@ -9,19 +9,19 @@
 | Campo | Valor |
 |---|---|
 | **Fase atual** | Front-end |
-| **Feature em andamento** | Nenhuma (próxima a iniciar: 05 — Front: Produtos) |
-| **Próxima feature** | 05 — Front: Produtos |
+| **Feature em andamento** | 05 — Front: Produtos (Spec aprovada; implementando) |
+| **Próxima feature** | — (05 é a última do recorte) |
 | **Backend** | ✅ Completo e no ar (features 00–03; 45 testes) |
-| **Último commit relevante** | `[C-T4]` — camada de continuidade concluída |
+| **Último commit relevante** | `e2ee10d`+ — base da 05 aprovada |
 | **Atualizado em** | 2026-09-04 |
 
 ## Onde paramos
 
-O backend (00–03) e o front de Empresas (04) estão concluídos, testados (45 + 39 testes) e **rodando integrados** via Docker (`http://localhost:5173` consumindo `http://localhost:8000/api`), verificados com dados reais (seed). A **camada de continuidade entre LLMs está concluída** (`ESTADO.md`, protocolo em `AGENTS.md §0`, mecânica tool-agnóstica) e teve o cold-start verificado por uma sessão independente. Não há feature em andamento.
+Backend (00–03) e front de Empresas (04) concluídos, testados (45 + 39 testes) e **rodando integrados** via Docker (verificados com dados reais). Camada de continuidade entre LLMs concluída. A **Feature 05 (Front: Produtos)** teve PRD + Spec **aprovados** na validação autônoma (2 rodadas; F1 = seletor de empresa apta que truncava em 10 empresas, corrigido). Implementação prestes a começar.
 
 ## Próximo passo
 
-Iniciar a **Feature 05 — Front: Produtos** pelo fluxo padrão: **PRD → Spec → validação autônoma → implementação por tickets**. Criar `specs/05-front-produtos/` a partir dos templates (`specs/_templates/`), tendo como base [`docs/04-requisitos.md`](docs/04-requisitos.md#produto), [`docs/05-ux-e-interface.md`](docs/05-ux-e-interface.md) e o contrato de produtos em [`docs/15-contrato-api.md`](docs/15-contrato-api.md#endpoints--produtos). Escopo: telas de Produtos + **seletor de empresa apta** (`GET /api/empresas?status=Ativo`) + ações condicionais. Reaproveitar a base do front (lib/http, shared/, TanStack Query, `formatarPreco` já pronto).
+Implementar a **Feature 05** pelos tickets de [`specs/05-front-produtos/spec.md §7`](specs/05-front-produtos/spec.md): **05-T1** (navegação Empresas/Produtos + rota `/produtos`) → 05-T2 (mover `AcoesPermitidas` p/ `shared/` + camada de dados de produtos, incl. `listarEmpresasAptas` iterando páginas) → 05-T3 (listagem) → 05-T4 (form + `EmpresaAptaSelect`) → 05-T5 (ações de ciclo de vida) → 05-T6 (validação final). Commit por ticket `[05-TX]`; atualizar este `ESTADO.md` + checkbox a cada um. Após a 05: fechamento (README de execução, foco de teclado, logo real).
 
 ## Progresso
 
@@ -34,7 +34,7 @@ Espelha a coluna **Status** do [recorte em `specs/README.md`](specs/README.md#re
 | 02 | Produtos (API) | ✅ Concluído |
 | 03 | Correções de back-end (hardening) | ✅ Concluído |
 | 04 | Front — base + Empresas | ✅ Concluído |
-| 05 | Front — Produtos | ⬜ A fazer |
+| 05 | Front — Produtos | 🔄 Em andamento |
 | — | Processo — Continuidade entre LLMs | ✅ Concluído |
 
 ## Como retomar
