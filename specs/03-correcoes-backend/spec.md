@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação autônoma, rodada 2) |
+| **Status** | Concluído (todos os tickets; suíte verde) |
 | **Funcionalidade** | 03-correcoes-backend |
 | **PRD relacionado** | [prd.md](./prd.md) · [validation.md](./validation.md) |
 
@@ -57,18 +57,18 @@ Não introduz regra nova. Preserva o contrato de erros de negócio (409/422 com 
 - [x] **03-T3** — `DB::transaction` em `ProdutoService::excluir()`/`restaurar()` + reset de `excluido_em_cascata` na restauração — suíte de produtos verde (14), 2 transações confirmadas.
 - [x] **03-T4** — Migration de índice `deleted_at` em `empresas` e `produtos` — aplicada e confirmada (empresas_deleted_at_index, produtos_deleted_at_index).
 - [x] **03-T5** — Ajustes em `docs/15` (produto: `editar` exige empresa apta na tabela de derivação; empresa: `produtos_count` no exemplo de payload).
-- [ ] **03-T6** — Validação executável final: `php artisan test` verde + verificações (404 limpo, CORS, índice).
+- [x] **03-T6** — Validação executável final: `php artisan test` verde (45 passed / 171 asserções); 404/CORS/índice verificados.
 
 ## 7. Definition of Done
 
-- [ ] Todos os tickets concluídos.
-- [ ] 404/500 padronizados sem vazar detalhes; 422/409 preservados.
-- [ ] CORS restrito ao `FRONTEND_URL`.
-- [ ] `ProdutoService` atômico em exclusão/restauração; `excluido_em_cascata` resetado na restauração.
-- [ ] Índice `deleted_at` presente em ambas as tabelas.
-- [ ] `docs/15` alinhado ao comportamento real.
-- [ ] `php artisan test` verde (sem regressões; com novos testes de erro).
-- [ ] Critérios de aceite do PRD atendidos.
+- [x] Todos os tickets concluídos.
+- [x] 404/500 padronizados sem vazar detalhes; 422/409 preservados.
+- [x] CORS restrito ao `FRONTEND_URL`.
+- [x] `ProdutoService` atômico em exclusão/restauração; `excluido_em_cascata` resetado na restauração.
+- [x] Índice `deleted_at` presente em ambas as tabelas.
+- [x] `docs/15` alinhado ao comportamento real.
+- [x] `php artisan test` verde (45 passed / 171 asserções; sem regressões).
+- [x] Critérios de aceite do PRD atendidos.
 
 ## 8. Decisões e riscos locais
 

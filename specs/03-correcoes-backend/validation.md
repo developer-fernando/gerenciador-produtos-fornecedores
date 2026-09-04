@@ -50,6 +50,18 @@ Re-auditoria completa em novo contexto, com verificação do **código-fonte do 
 
 - CORS por `curl` (complementar ao teste automatizado) e `SHOW INDEX` do `deleted_at` — ambos verificações executáveis simples nos tickets 03-T2/03-T4.
 
+## Camada executável (conclusão)
+
+Correções implementadas e validadas por **ground truth executável**:
+- **#1** — Handler global: 404/500 padronizados sem `trace`/`exception`/`file`; 422/409 preservados. Testes: `TratamentoDeErrosTest` (4 casos) + 404 vivo confirmado limpo.
+- **#2** — `config/cors.php` restrito ao `FRONTEND_URL`; `*` eliminado. Testes: `CorsTest` (2 casos) + header vivo = `http://localhost:5173`.
+- **#3** — `ProdutoService::excluir()`/`restaurar()` agora em `DB::transaction` (2) + reset de `excluido_em_cascata`; suíte de produtos sem regressão.
+- **#4** — Índice `deleted_at` criado em `empresas` e `produtos` (confirmado no `information_schema`).
+- **#5** — `docs/15` alinhado (editar do produto exige empresa apta; `produtos_count` no exemplo).
+- **Suíte completa:** `php artisan test` → **45 passed / 171 asserções** (antes 39), sem regressões.
+
+Todos os tickets (03-T1…03-T6) concluídos e o DoD atendido. **Funcionalidade 03 concluída — back-end agora sólido, sem as ressalvas da auditoria.**
+
 ## Histórico de rodadas
 
 | Rodada | Veredito | Bloqueantes | Observação |

@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação autônoma, rodada 2) |
+| **Status** | Concluído |
 | **Funcionalidade** | 03-correcoes-backend |
 | **Spec relacionada** | [spec.md](./spec.md) · [validation.md](./validation.md) |
 
@@ -58,11 +58,11 @@ Não altera regras de negócio. Reforça requisitos já documentados:
 
 ## 8. Critérios de aceite
 
-- [ ] `GET /api/empresas/{id inexistente}` e `/api/produtos/{id inexistente}` retornam **404** com corpo `{ "message": "..." }` **sem** `trace`/`exception`/`file` e sem nome de classe/ID interno.
-- [ ] Um erro interno (500) retorna mensagem genérica, sem detalhes internos.
-- [ ] Respostas 422 (validação) e 409 (regra de negócio) permanecem no formato atual.
-- [ ] `OPTIONS`/requisições com `Origin` do front recebem `Access-Control-Allow-Origin` **igual ao `FRONTEND_URL`**, não `*`.
-- [ ] `ProdutoService::excluir()` e `restaurar()` executam em transação; restauração reseta `excluido_em_cascata`.
-- [ ] `empresas` e `produtos` possuem índice em `deleted_at` (verificável por `SHOW INDEX`).
-- [ ] `docs/15` reflete a regra real de `editar` do produto e inclui `produtos_count` no exemplo de Empresa.
-- [ ] `php artisan test` permanece verde (com novos testes de 404/erro).
+- [x] `GET /api/empresas/{id inexistente}` e `/api/produtos/{id inexistente}` retornam **404** com corpo `{ "message": "..." }` **sem** `trace`/`exception`/`file` e sem nome de classe/ID interno.
+- [x] Um erro interno (500) retorna mensagem genérica, sem detalhes internos.
+- [x] Respostas 422 (validação) e 409 (regra de negócio) permanecem no formato atual.
+- [x] `OPTIONS`/requisições com `Origin` do front recebem `Access-Control-Allow-Origin` **igual ao `FRONTEND_URL`**, não `*`.
+- [x] `ProdutoService::excluir()` e `restaurar()` executam em transação; restauração reseta `excluido_em_cascata`.
+- [x] `empresas` e `produtos` possuem índice em `deleted_at` (verificável por `SHOW INDEX`).
+- [x] `docs/15` reflete a regra real de `editar` do produto e inclui `produtos_count` no exemplo de Empresa.
+- [x] `php artisan test` permanece verde (com novos testes de 404/erro).
