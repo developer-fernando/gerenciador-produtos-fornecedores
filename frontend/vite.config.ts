@@ -17,5 +17,9 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
     css: false,
+    // Testes com jsdom + MSW + user-event podem estourar o timeout padrão (5s)
+    // sob carga da suíte completa no Windows; folga evita flakiness de timing.
+    testTimeout: 15000,
+    hookTimeout: 15000,
   },
 })
