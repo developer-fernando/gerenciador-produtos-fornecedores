@@ -53,7 +53,7 @@ Não introduz regra nova. Preserva o contrato de erros de negócio (409/422 com 
 ## 6. Tickets
 
 - [x] **03-T1** — Handler global de exceções (404/500 padronizados sem detalhes; defere 422/409) + testes (404 limpo, 500 limpo sem vazar, regressão 422 e 409) — 4 passed; 404 vivo confirmado.
-- [ ] **03-T2** — `config/cors.php` restrito ao `FRONTEND_URL` + teste de feature (`assertHeader('Access-Control-Allow-Origin', ...)`) e verificação por curl.
+- [x] **03-T2** — `config/cors.php` restrito ao `FRONTEND_URL` (sem `*`) + testes de feature (2 passed) e verificação por curl (header vivo = http://localhost:5173).
 - [ ] **03-T3** — Transações em `ProdutoService::excluir()`/`restaurar()` + reset de `excluido_em_cascata` na restauração.
 - [ ] **03-T4** — Migration de índice `deleted_at` em `empresas` e `produtos` (verificado por `SHOW INDEX`).
 - [ ] **03-T5** — Ajustes de documentação em `docs/15` (editar do produto exige empresa apta; `produtos_count` no exemplo de Empresa).
