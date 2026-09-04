@@ -1,0 +1,36 @@
+.wrap {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-2);
+}
+
+.wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.wrap th,
+.wrap td {
+  text-align: left;
+  padding: var(--esp-3) var(--esp-4);
+  border-bottom: 1px solid var(--cor-borda);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.wrap th {
+  background: var(--horizon-cinza-claro);
+  font-weight: 700;
+  color: var(--cor-texto);
+}
+
+.wrap tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.wrap tbody tr:hover {
+  background: #fafafa;
+}

@@ -1,0 +1,62 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--esp-6) var(--esp-4);
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.dialog {
+  background: var(--cor-superficie);
+  border-radius: var(--raio-3);
+  box-shadow: var(--sombra-2);
+  width: 100%;
+  max-width: 520px;
+  margin-top: var(--esp-6);
+  outline: none;
+  border-top: 4px solid var(--horizon-amarelo);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-3);
+  padding: var(--esp-4) var(--esp-5);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.fechar {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--cor-texto-suave);
+  padding: var(--esp-1) var(--esp-2);
+  border-radius: var(--raio-1);
+}
+.fechar:hover {
+  background: var(--horizon-cinza-claro);
+}
+
+.body {
+  padding: var(--esp-5);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--esp-3);
+  padding: var(--esp-4) var(--esp-5);
+  border-top: 1px solid var(--cor-borda);
+}

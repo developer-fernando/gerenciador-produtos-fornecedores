@@ -1,0 +1,75 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--esp-2);
+  padding: var(--esp-2) var(--esp-4);
+  border-radius: var(--raio-1);
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.12s ease, border-color 0.12s ease, opacity 0.12s ease;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Primário = ação (amarelo, texto preto — docs/05). */
+.primario {
+  background: var(--cor-acao);
+  color: var(--cor-acao-texto);
+}
+.primario:not(:disabled):hover {
+  background: var(--cor-acao-hover);
+}
+
+/* Secundário = contorno neutro. */
+.secundario {
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  border-color: var(--cor-borda);
+}
+.secundario:not(:disabled):hover {
+  background: var(--horizon-cinza-claro);
+}
+
+/* Fantasma = só texto (ações em linha da tabela). */
+.fantasma {
+  background: transparent;
+  color: var(--cor-texto);
+  border-color: transparent;
+  padding: var(--esp-1) var(--esp-2);
+}
+.fantasma:not(:disabled):hover {
+  background: var(--horizon-cinza-claro);
+}
+
+/* Perigo = ações destrutivas (excluir definitivamente). */
+.perigo {
+  background: var(--cor-perigo);
+  color: var(--cor-perigo-texto);
+}
+.perigo:not(:disabled):hover {
+  background: var(--cor-perigo-hover);
+}
+
+/* Variante de perigo em linha (fantasma vermelho). */
+.perigoFantasma {
+  background: transparent;
+  color: var(--cor-perigo);
+  border-color: transparent;
+  padding: var(--esp-1) var(--esp-2);
+}
+.perigoFantasma:not(:disabled):hover {
+  background: var(--feedback-erro-fundo);
+}
+
+.pequeno {
+  font-size: 13px;
+  padding: var(--esp-1) var(--esp-2);
+}

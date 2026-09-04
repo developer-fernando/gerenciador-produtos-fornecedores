@@ -1,0 +1,26 @@
+.paginacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-3);
+  padding: var(--esp-3) 0;
+  flex-wrap: wrap;
+}
+
+.info {
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+}
+
+.controles {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+}
+
+.pagina {
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 96px;
+  text-align: center;
+}
