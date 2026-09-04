@@ -118,13 +118,14 @@ Cada funcionalidade registra o resultado em `specs/NN-.../validation.md` (rubric
 
 ## Recorte das funcionalidades
 
-| Nº | Funcionalidade | Abrange |
-|---|---|---|
-| 00 | **Fundação de dados** | Migrations + Models de `empresas` e `produtos` (schema, FK, índices, soft delete, `excluido_em_cascata`). |
-| 01 | **Empresas (API)** | CRUD + status + exclusão lógica/restauração + exclusão física (bloqueio) + listagem/filtros + **cascatas disparadas pela empresa** (inativar/excluir/restaurar → produtos). |
-| 02 | **Produtos (API)** | CRUD + vínculo com empresa apta + status + exclusão lógica/restauração + exclusão física + regras do lado do produto (reativação/restauração exigem empresa apta). |
-| 03 | **Correções de back-end (hardening)** | Achados da validação da implementação: handler de erros padronizado (404/500 sem vazar detalhes), CORS restrito, transações no `ProdutoService`, índice `deleted_at`, ajustes de documentação. |
-| 04 | **Front — base + Empresas** ✅ | Shell da SPA (layout, cliente API, TanStack Query) + telas de Empresas. |
-| 05 | **Front — Produtos** | Telas de Produtos + seletor de empresa apta + ações condicionais. |
+| Nº | Funcionalidade | Status | Abrange |
+|---|---|---|---|
+| 00 | **Fundação de dados** | ✅ Concluído | Migrations + Models de `empresas` e `produtos` (schema, FK, índices, soft delete, `excluido_em_cascata`). |
+| 01 | **Empresas (API)** | ✅ Concluído | CRUD + status + exclusão lógica/restauração + exclusão física (bloqueio) + listagem/filtros + **cascatas disparadas pela empresa** (inativar/excluir/restaurar → produtos). |
+| 02 | **Produtos (API)** | ✅ Concluído | CRUD + vínculo com empresa apta + status + exclusão lógica/restauração + exclusão física + regras do lado do produto (reativação/restauração exigem empresa apta). |
+| 03 | **Correções de back-end (hardening)** | ✅ Concluído | Achados da validação da implementação: handler de erros padronizado (404/500 sem vazar detalhes), CORS restrito, transações no `ProdutoService`, índice `deleted_at`, ajustes de documentação. |
+| 04 | **Front — base + Empresas** | ✅ Concluído | Shell da SPA (layout, cliente API, TanStack Query) + telas de Empresas. |
+| 05 | **Front — Produtos** | ⬜ A fazer | Telas de Produtos + seletor de empresa apta + ações condicionais. |
+| — | **Processo — Continuidade entre LLMs** | 🔄 Em andamento | Camada de continuidade (não é feature de produto): `ESTADO.md` vivo, protocolo de cold-start no `AGENTS.md`, mecânica tool-agnóstica. Ver [`continuidade-entre-llms/`](continuidade-entre-llms/spec.md). |
 
-> O recorte pode ser ajustado conforme avançamos; a tabela reflete o plano atual.
+> O recorte pode ser ajustado conforme avançamos; a tabela reflete o plano atual. A coluna **Status** é a fonte que o [`ESTADO.md`](../ESTADO.md) espelha.
