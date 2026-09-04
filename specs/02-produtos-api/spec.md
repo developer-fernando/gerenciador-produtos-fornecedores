@@ -69,7 +69,7 @@ Feature tests (Pest + `RefreshDatabase`, MySQL de testes) — [docs/14](../../do
 - [x] **02-T4** — `ProdutoResource` (payload + `empresa` resumo + `excluido` + `acoes_permitidas` derivadas do produto e da aptidão da empresa) — verificado via tinker.
 - [x] **02-T5** — `ProdutoService`: create/update/show/list (eager load `empresa`; paginação 10 + filtros; editar produto excluído → 409) — verificado via tinker.
 - [x] **02-T6** — `ProdutoService`: inativar / reativar (exige empresa apta) + revalidação 409 em produto excluído — verificado via tinker.
-- [ ] **02-T7** — `ProdutoService`: exclusão lógica individual / restauração (exige empresa não excluída; status ajustado à aptidão da empresa).
+- [x] **02-T7** — `ProdutoService`: exclusão lógica individual (`excluido_em_cascata=false`) / restauração (exige empresa não excluída; status ajustado à aptidão) — verificado via tinker.
 - [ ] **02-T8** — `ProdutoService`: exclusão física (só de produto já excluído) + `ProdutoController` + rotas.
 - [ ] **02-T9** — Testes de feature cobrindo todas as regras acima.
 

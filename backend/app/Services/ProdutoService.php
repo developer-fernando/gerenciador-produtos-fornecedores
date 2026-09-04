@@ -114,4 +114,48 @@ class ProdutoService
 
         return $produto->load($this->comEmpresa());
     }
+
+    /**
+     * Exclusão lógica individual: marca `excluido_em_cascata = false` (não é cascata
+     * da empresa) e exclui logicamente.
+     */
+    public function excluir(int $id): Produto
+    {
+        $produto = Produto::withTrashed()->findOrFail($id);
+
+        if ($produto->trashed()) {
+            throw RegraDeNegocioException::registroExcluido();
+        }
+
+        $produto->update(['excluido_em_cascata' => false]);
+        $produto->delete();
+
+        return $produto->load($this->comEmpresa());
+    }
+
+    /**
+     * Restauração individual: exige a empresa não excluída. Se a empresa estiver
+     * inativa, o produto volta como Inativo (regra 4); se ativa, mantém o status.
+     */
+    public function restaurar(int $id): Produto
+    {
+        $produto = Produto::withTrashed()->with($this->comEmpresa())->findOrFail($id);
+
+        if (! $produto->trashed()) {
+            throw new RegraDeNegocioException('O produto não está excluído.', 'registro_nao_excluido');
+        }
+
+        $empresa = $produto->empresa;
+        if ($empresa === null || $empresa->trashed()) {
+            throw RegraDeNegocioException::empresaExcluida();
+        }
+
+        $produto->restore();
+
+        if ($empresa->status !== 'Ativo') {
+            $produto->update(['status' => 'Inativo']);
+        }
+
+        return $produto->load($this->comEmpresa());
+    }
 }
