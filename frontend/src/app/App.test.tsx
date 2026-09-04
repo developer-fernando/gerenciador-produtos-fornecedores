@@ -10,7 +10,7 @@ describe('App (shell)', () => {
         <App />
       </AppProviders>,
     )
-    expect(screen.getByText('Horizon')).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'Horizon' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Empresas' })).toBeInTheDocument()
   })
 })

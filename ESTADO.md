@@ -21,7 +21,7 @@ Backend (00–03), front de Empresas (04) e front de Produtos (05) concluídos. 
 
 ## Próximo passo
 
-**Fechamento da entrega** (fora do recorte 00–05): revisar o README de execução (clone-and-run + estrutura), substituir o fallback textual da logo pelo arquivo real quando for fornecido. O foco de teclado em Produtos foi conferido no 05-T6 (`:focus-visible` visível no Tab).
+**Fechamento da entrega** (fora do recorte 00–05): revisar o README de execução (clone-and-run + estrutura). Logotipo real aplicado no cabeçalho; foco de teclado em Produtos conferido no 05-T6.
 
 ## Progresso
 

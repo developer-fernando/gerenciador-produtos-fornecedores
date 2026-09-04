@@ -13,38 +13,18 @@
   gap: var(--esp-4);
 }
 
-/* Marca: fallback textual "Horizon" com o A/acento em amarelo.
-   Substituível por <img> da logo real num único ponto (docs/05). */
+/* Marca: logotipo real, sem distorção nem recoloração (docs/05). */
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--esp-2);
   text-decoration: none;
-  color: var(--cor-header-texto);
-  font-weight: 800;
-  font-size: 22px;
-  letter-spacing: 0.5px;
-}
-
-.brandMark {
-  display: inline-grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--raio-1);
-  background: var(--horizon-amarelo);
-  color: var(--horizon-preto);
-  font-weight: 900;
-}
-
-.brandName {
-  color: var(--cor-header-texto);
 }
 
 .logo {
-  height: 32px;
+  height: 40px;
   width: auto;
   display: block;
+  object-fit: contain;
 }
 
 .nav {

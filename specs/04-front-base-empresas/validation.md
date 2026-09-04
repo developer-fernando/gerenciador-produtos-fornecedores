@@ -84,7 +84,7 @@ Comportamentos que dependem da API real (rodar via Docker: `docker compose up --
 - [x] **Identidade visual Horizon** — verificada no dev server (paleta, texto preto sobre amarelo).
 - [x] **Responsividade** — verificada a 375px e desktop.
 - [x] **Validação de formulário por campo** — verificada visualmente.
-- [ ] **Logo no cabeçalho:** substituir o fallback textual pelo arquivo real (dependência: usuário fornece a logo) e conferir que não há distorção/recoloração.
+- [x] **Logo no cabeçalho:** logotipo real (`frontend/src/assets/horizon-logo.jpg`) no `Header`; altura fixa + `width: auto` + `object-fit: contain` (sem distorção/recoloração).
 - [ ] **Acessibilidade — foco de teclado visível:** navegar por Tab em filtros, tabela, formulário e diálogos (o CSS `:focus-visible` está aplicado; falta a conferência manual).
 - [ ] **Fluxo ponta a ponta com dados reais (via Docker):** listar (paginação/filtros) → criar → editar → inativar (ver aviso de impacto) → excluir → restaurar → excluir definitivamente, observando que a lista atualiza **sem reload** e o feedback (toast) aparece a cada ação.
 

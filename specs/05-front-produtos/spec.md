@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Concluído (59 testes verdes; E2E via Docker conferido; logo real no fechamento) |
+| **Status** | Concluído (59 testes verdes; E2E via Docker conferido; logotipo no cabeçalho) |
 | **Funcionalidade** | 05-front-produtos |
 | **PRD relacionado** | [prd.md](./prd.md) · [validation.md](./validation.md) |
 
@@ -109,7 +109,7 @@ Camada executável (Vitest + RTL + user-event + MSW):
 - [x] Regras/validações de UX conforme a origem (seletor apto, ações condicionais, avisos, filtros, invalidação).
 - [x] Testes Vitest previstos passando (59); `npm run build` e `npm run lint` verdes.
 - [x] Sem segredos no bundle; sem `dangerouslySetInnerHTML`; erros sem detalhes internos.
-- [x] Critérios de aceite do PRD atendidos (logo real permanece no fechamento — `validation.md`).
+- [x] Critérios de aceite do PRD atendidos.
 
 ## 9. Decisões e riscos locais
 

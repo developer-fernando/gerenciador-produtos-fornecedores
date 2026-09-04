@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Concluído (implementação validada; logo real no fechamento) |
+| **Status** | Concluído (implementação validada; logotipo no cabeçalho) |
 | **Funcionalidade** | 05-front-produtos |
 | **Spec relacionada** | [spec.md](./spec.md) · [validation.md](./validation.md) |
 

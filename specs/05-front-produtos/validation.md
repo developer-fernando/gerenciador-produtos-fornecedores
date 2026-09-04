@@ -4,7 +4,7 @@
 |---|---|
 | **Funcionalidade** | 05-front-produtos |
 | **Artefatos avaliados** | [prd.md](./prd.md) · [spec.md](./spec.md) |
-| **Veredito atual** | **Concluído** — validação estática aprovada (2 rodadas) + camada executável verde (59 testes); E2E via Docker conferido; logo real permanece no fechamento |
+| **Veredito atual** | **Concluído** — validação estática aprovada (2 rodadas) + camada executável verde (59 testes); E2E via Docker conferido; logotipo real no cabeçalho |
 | **Rodadas** | 2 estáticas + camada executável |
 | **Verificador** | verificação independente em contexto novo (sessão/chat separada; subagente é uma opção) · modelo: Sonnet (diferente do autor) |
 
@@ -54,7 +54,7 @@ Comportamentos conferidos via Docker (`http://localhost:5173`, API real):
 - [x] **Ações condicionais** — ativo/apta: Editar/Inativar/Excluir; empresa inativa (Carvalho): sem Editar; excluído com empresa apta: Restaurar + Excluir definitivamente.
 - [x] **Aviso de irreversibilidade** — diálogo "Excluir definitivamente" (verificado no T5 em produto da Zambrano; botão presente no T6 no produto de teste excluído).
 - [x] **Foco de teclado visível** — Tab em ação da linha (`Editar`) aplica outline `2px solid` (`:focus-visible` em `global.css`).
-- [ ] **Logo no cabeçalho:** substituir o fallback textual pelo arquivo real (dependência: usuário fornece a logo). Item de **fechamento**, não bloqueia a 05.
+- [x] **Logo no cabeçalho:** logotipo real (`frontend/src/assets/horizon-logo.jpg`) no `Header`; sem distorção/recoloração.
 
 ## Histórico de rodadas
 
@@ -62,4 +62,4 @@ Comportamentos conferidos via Docker (`http://localhost:5173`, API real):
 |---|---|---|---|
 | 1 | Reprovado | 1 (F1 seletor trunca em 10) | + N1–N3 |
 | 2 | **Aprovado** | 0 | + N5–N7 (clareza, incorporados) |
-| executável (05-T6) | **Concluído** | 0 | 59 testes; E2E via Docker; logo real no fechamento |
+| executável (05-T6) | **Concluído** | 0 | 59 testes; E2E via Docker; logotipo no cabeçalho |

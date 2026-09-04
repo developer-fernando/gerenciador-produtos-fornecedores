@@ -44,4 +44,4 @@ Regras de aplicação (🟩):
 - **Texto sobre amarelo é sempre preto.**
 - **Não** usar texto amarelo sobre branco.
 
-🟦 **Logotipo:** o logotipo Horizon será utilizado no cabeçalho, respeitando as regras acima. **Pendência:** o arquivo ainda não está no repositório; até ser fornecido, o cabeçalho usa um fallback textual ("Horizon", preto sobre amarelo), substituível por um único ponto quando o asset chegar.
+🟦 **Logotipo:** o logotipo Horizon é aplicado no cabeçalho, **sem distorção ou recoloração**. Asset em `frontend/src/assets/horizon-logo.jpg`, importado num único ponto (`Header`).

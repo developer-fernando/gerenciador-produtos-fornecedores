@@ -206,6 +206,6 @@ Antes de alterar qualquer coisa, a IA deve:
 
 ## Lacunas conhecidas (a definir na implementação, não assumir agora)
 
-- **Logotipo Horizon** — **pendente:** o arquivo ainda não está no repositório. Até ser fornecido, o cabeçalho usa um **fallback textual** ("Horizon", preto sobre amarelo); ao chegar, substitui-se o asset num único ponto. Posicionamento conforme [docs/05](docs/05-ux-e-interface.md).
+_(Nenhuma pendência aberta.)_
 
-> Resolvidos: o mecanismo de rastreio da exclusão em cascata (regra 6) — coluna `produtos.excluido_em_cascata` ([docs/13](docs/13-persistencia-e-banco.md#rastreio-da-exclusão-em-cascata-regra-6--mecanismo-concreto)); e o **contrato da API** ([docs/15](docs/15-contrato-api.md)).
+> Resolvidos: o mecanismo de rastreio da exclusão em cascata (regra 6) — coluna `produtos.excluido_em_cascata` ([docs/13](docs/13-persistencia-e-banco.md#rastreio-da-exclusão-em-cascata-regra-6--mecanismo-concreto)); o **contrato da API** ([docs/15](docs/15-contrato-api.md)); e o **logotipo Horizon** no cabeçalho (`frontend/src/assets/horizon-logo.jpg`, importado no `Header` — [docs/05](docs/05-ux-e-interface.md)).

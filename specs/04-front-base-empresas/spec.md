@@ -127,7 +127,7 @@ Camada executável ([AGENTS §Testes front](../../AGENTS.md) — Vitest + RTL + 
 
 ## 9. Decisões e riscos locais
 
-- **Logo Horizon (dependência):** os docs afirmam que a logo "já existe" ([docs/05 §Identidade](../../docs/05-ux-e-interface.md#identidade-visual-horizon)), mas **não há arquivo no repositório**. Decisão: o `Header` referencia a logo por um único ponto (`shared` ou `assets`), com **fallback textual** ("Horizon", preto sobre amarelo, respeitando as regras da paleta) até o arquivo ser fornecido. Trocar o asset não muda o restante. Item de **verificação manual**.
+- **Logo Horizon:** resolvido — asset em `frontend/src/assets/horizon-logo.jpg`, importado no `Header` (sem distorção/recoloração). O fallback textual ficou só até o arquivo chegar.
 - **CSS sem framework:** paleta e layout via CSS + tokens, para controle total da identidade e simplicidade (evitar dependência de UI kit). Componentes acessíveis à mão (foco visível, `aria` em modais/diálogos).
 - **Sem react-hook-form/zod:** um formulário simples de Empresa; controlados + validação manual bastam e evitam dependência fora da stack documentada.
 - **Filtros na URL/estado:** filtros e página mantidos em estado local (e opcionalmente refletidos na querystring); não é requisito, então mantém-se simples em estado local.
