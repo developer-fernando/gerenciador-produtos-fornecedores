@@ -28,16 +28,85 @@ specs/
 ## Fluxo de trabalho
 
 ```
-docs/ + AGENTS.md  ──►  PRD (o quê/por quê)  ──►  Spec (o como + tickets)  ──►  Implementação  ──►  DoD ✔
-                                     └──── rastreabilidade: PRD ↔ Spec ↔ tickets ↔ commits ────┘
+docs/ + AGENTS.md ─► PRD + Spec ─► Validação autônoma ⟳ ─► Implementação ─► Verificação executável ─► DoD ✔
+                              └──── rastreabilidade: PRD ↔ Spec ↔ tickets ↔ commits ────┘
 ```
 
 1. **PRD** — define o problema, o escopo e os critérios de aceite da funcionalidade.
 2. **Spec** — define a abordagem técnica, as mudanças por camada e a lista de **tickets**.
-3. **Implementação** — cada ticket é feito e marcado como concluído; o commit referencia o ticket.
-4. **DoD** — a funcionalidade é dada como concluída quando os critérios objetivos são atendidos.
+3. **Validação autônoma** — um verificador independente audita o PRD/Spec por rubrica e evidência; corrige-se e re-valida até **zero findings bloqueantes**. Só então libera a implementação. Ver [Validação autônoma](#validação-autônoma-de-prdspec).
+4. **Implementação** — cada ticket é feito e marcado como concluído; o commit referencia o ticket.
+5. **DoD** — a funcionalidade é concluída quando os critérios objetivos são atendidos e a **verificação executável** (testes/migrations) passa.
 
 > PRD pode ser enxuto em entregas puramente técnicas (ex.: fundação de dados). Specs são sempre necessárias, pois carregam os tickets.
+
+## Validação autônoma de PRD/Spec
+
+A validação de cada PRD/Spec é **autônoma** (sem depender de aprovação humana), porém **ancorada em evidência** — nunca em autoafirmação. A participação humana fica restrita a **testes manuais específicos**, apenas para comportamentos que não podem ser verificados automaticamente.
+
+### Princípio
+
+Uma Spec **não** é válida porque a IA afirmou que está. Ela só é válida quando **passa em uma rubrica objetiva, com evidência anexada a cada item**, auditada por um **verificador independente**, e (na implementação) confirmada por **testes executáveis**. O portão é **rubrica + evidência + execução**, não opinião.
+
+### Papéis (produtor × verificador)
+
+| Papel | Quem | Contexto |
+|---|---|---|
+| **Autor** | sessão principal | escreve/corrige o PRD + Spec |
+| **Verificador** | **subagente dedicado em contexto novo**, preferencialmente em **modelo diferente** | audita sem herdar o raciocínio do autor |
+
+O contexto novo evita "pontos cegos compartilhados" entre autor e verificador.
+
+### Fontes de evidência
+
+`docs/`, `AGENTS.md`, os **arquivos reais do repositório** (migrations, models, `composer.json`/`package.json`, versões) e **saída de comandos** (grep, `artisan`, testes) quando aplicável.
+
+### Rubrica (cada item: PASS/FAIL + evidência obrigatória + severidade)
+
+1. **Completude** — todas as seções preenchidas; sem placeholders `<...>` (checagem por grep).
+2. **Consistência com `docs/`** — cada regra/decisão citada bate com a fonte.
+3. **Consistência com a arquitetura** — respeita as decisões (Service+Eloquent, sem Repository, Form Requests, Resources).
+4. **Consistência com modelagem/schema** — campos/tipos/índices batem com `docs/03`, `docs/13` e as migrations reais.
+5. **Rastreabilidade** — regra→origem; ticket→requisito; critério de aceite→verificável.
+6. **Fundamentação** — nenhuma decisão inventada; toda decisão local justificada e sem contradizer `docs/`.
+7. **Escopo** — nada fora de escopo; nada essencial faltando.
+8. **Contradições internas** — PRD × Spec × tickets coerentes.
+9. **Verificabilidade** — critérios de aceite e DoD objetivos e, de preferência, expressos como teste.
+10. **Riscos/lacunas** — dependências e ambiguidades sinalizadas.
+
+Um PASS **sem evidência** vira FAIL. Findings são classificados em **bloqueante** / **não-bloqueante**.
+
+### Guardrails anti-autocomplacência
+
+- Verificador em **contexto novo** e **modelo diferente**.
+- **Evidência obrigatória** por item (link `docs/…#âncora` ou `arquivo:linha`).
+- **Postura adversarial** (assumir que há problema e tentar quebrar a Spec).
+- **Checagens determinísticas**: grep de placeholders, existência das âncoras citadas, existência de arquivos/versões referenciados.
+- Aprovação exige **zero findings bloqueantes com evidência** — não uma opinião favorável.
+
+### Duas camadas
+
+| Camada | Quando | Ground truth | Libera |
+|---|---|---|---|
+| **Estática** | ao fim do PRD/Spec | docs + arquivos + rubrica | iniciar a implementação |
+| **Executável** | na implementação | **testes + migrations rodando** | marcar ticket/DoD como concluído |
+
+### Loop (limitado, com escape)
+
+```
+Autor escreve → Verificador (contexto novo, adversarial, por evidência) → findings
+   há bloqueante? sim → corrige → re-valida (novo contexto)   [máx. 3 rodadas]
+                  não → APROVADO → implementação
+   não convergiu em 3 rodadas → PARA e escala para o humano (não força aprovação)
+```
+
+### Participação humana
+
+Restrita a **testes manuais específicos** de comportamentos não verificáveis automaticamente (ex.: conferência visual de UI/identidade, um fluxo de ponta a ponta no navegador). Esses casos são listados explicitamente no `validation.md` como **"verificação manual necessária"**.
+
+### Artefato
+
+Cada funcionalidade registra o resultado em `specs/NN-.../validation.md` (rubrica preenchida, evidências, findings, correções e veredito por rodada) — a trilha de auditoria da validação. Template em [`_templates/validation.md`](_templates/validation.md).
 
 ## Convenções
 

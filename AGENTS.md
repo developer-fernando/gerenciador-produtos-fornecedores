@@ -159,6 +159,8 @@ Campos e validações: [docs/03-modelagem.md](docs/03-modelagem.md).
 
 A implementação é organizada em funcionalidades pequenas e rastreáveis em [`specs/`](specs/README.md): cada funcionalidade tem um **PRD** (o quê/por quê) e uma **Spec** (o como + **tickets**). As specs referenciam `docs/` e este guia — não recopiam. Commits referenciam o ticket (ex.: `[01-T3]`). Antes de implementar uma funcionalidade, consultar/atualizar sua Spec.
 
+Cada PRD/Spec passa por **validação autônoma** antes da implementação: um verificador independente (subagente em contexto novo, por rubrica e evidência) audita os artefatos; só avança com **zero findings bloqueantes**, registrados em `specs/NN-.../validation.md`. A camada executável (testes/migrations) valida a conclusão. A participação humana fica restrita a testes manuais específicos. Ver [`specs/README.md`](specs/README.md#validação-autônoma-de-prdspec).
+
 ## 9. Diretrizes para utilização de IA
 
 Antes de alterar qualquer coisa, a IA deve:
