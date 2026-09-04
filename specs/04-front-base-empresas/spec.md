@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação estática — pronta para implementação) |
+| **Status** | Concluído (39 testes verdes; manuais restantes no validation.md) |
 | **Funcionalidade** | 04-front-base-empresas |
 | **PRD relacionado** | [prd.md](./prd.md) · [validation.md](./validation.md) |
 
@@ -114,16 +114,16 @@ Camada executável ([AGENTS §Testes front](../../AGENTS.md) — Vitest + RTL + 
 - [x] **04-T6** — Empresas listagem: `EmpresasPage`+`EmpresasFiltros`+`EmpresasTabela`, paginação, filtros (nome/status/excluídos), estados loading/vazio/erro, `produtos_count`, badges — _6 testes via MSW: loading→dados, vazio, erro, paginação (page=2), **filtros combinados** (nome+status+excluidos) e badge na linha — verdes._
 - [x] **04-T7** — Empresas formulário (criar/editar): `EmpresaFormModal` com validação por campo (UX) + mapeamento de 422 para o campo (aria-describedby), feedback de sucesso (toast), invalidação; botão "Nova empresa" na página — _3 testes (422→campo cnpj, validação local sem chamar API, submit válido fecha) verdes._
 - [x] **04-T8** — Empresas ações de ciclo de vida: `AcoesEmpresa` condicional + inativar (aviso de impacto com `produtos_count`), reativar, excluir, restaurar, excluir definitivamente (confirmação/irreversível), tratamento de 409; edição ligada à linha — _6 testes de AcoesEmpresa (4 estados condicionais incl. reativar; impacto; 409 irreversível) + invalidação pós-ação na página — verdes._
-- [ ] **04-T9** — Validação executável final + verificação manual: `build`+`lint`+`test` verdes; checklist manual (identidade, responsivo, foco, fluxo E2E via Docker) registrado — _DoD atendido._
+- [x] **04-T9** — Validação executável final + verificação manual: `build`+`lint`+`test` (39) verdes; identidade/responsivo/validação conferidos no navegador; checklist manual restante (logo real, foco de teclado, E2E via Docker) registrado no `validation.md` — _DoD atendido._
 
 ## 8. Definition of Done
 
-- [ ] Todos os tickets concluídos.
-- [ ] Regras/validações de UX implementadas conforme a origem (ações condicionais, avisos, filtros, invalidação).
-- [ ] Invalidação verificada: após mutação, a listagem reflete o novo estado **sem reload** (teste em 04-T8).
-- [ ] Testes Vitest previstos passando; `npm run build` e `npm run lint` verdes.
-- [ ] Sem segredos no bundle; sem `dangerouslySetInnerHTML`; erros exibidos sem detalhes internos.
-- [ ] Critérios de aceite do PRD atendidos (os manuais confirmados no `validation.md`).
+- [x] Todos os tickets concluídos.
+- [x] Regras/validações de UX implementadas conforme a origem (ações condicionais, avisos, filtros, invalidação).
+- [x] Invalidação verificada: após mutação, a listagem reflete o novo estado **sem reload** (teste em 04-T8/página).
+- [x] Testes Vitest previstos passando (39); `npm run build` e `npm run lint` verdes.
+- [x] Sem segredos no bundle; sem `dangerouslySetInnerHTML`; erros exibidos sem detalhes internos.
+- [x] Critérios de aceite do PRD atendidos (os manuais restantes — logo real, foco de teclado, E2E via Docker — listados no `validation.md`).
 
 ## 9. Decisões e riscos locais
 

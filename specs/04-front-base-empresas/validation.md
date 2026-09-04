@@ -4,8 +4,8 @@
 |---|---|
 | **Funcionalidade** | 04-front-base-empresas |
 | **Artefatos avaliados** | [prd.md](./prd.md) · [spec.md](./spec.md) |
-| **Veredito atual** | **Aprovado** (estático) — 4ª rodada de confirmação, 0 bloqueantes |
-| **Rodadas** | 4 (3 + 1 confirmação, autorizada pelo autor humano ao atingir o teto) |
+| **Veredito atual** | **Concluído** — validação estática aprovada (4 rodadas) + camada executável verde (39 testes); manuais restantes listados abaixo |
+| **Rodadas** | 4 estáticas (3 + 1 confirmação) + camada executável |
 | **Verificador** | subagente independente em contexto novo · modelo: Sonnet (diferente do autor) |
 
 > A camada **executável** (Vitest/MSW + build/lint) e a **verificação manual** de UI são registradas na conclusão dos tickets.
@@ -69,14 +69,24 @@ Re-auditoria em novo contexto após correções de F5 e N8–N11: **F1–F5 conf
 | 9 | Verificabilidade | PASS |
 | 10 | Riscos/lacunas | PASS |
 
+## Camada executável (conclusão — 04-T9)
+
+Implementação validada por **ground truth executável** (`frontend/`):
+- **`npm run build`** (tsc + vite) — verde.
+- **`npm run test`** (Vitest + RTL + user-event + MSW) — **39 passed / 7 arquivos**, cobrindo: normalização de erros (10), formatadores (8), `StatusBadge` incl. caso combinado F4 (4), shell (1), listagem via MSW — loading/vazio/erro, paginação `page=2`, filtros combinados, invalidação pós-ação F1 (7), formulário — 422→campo/validação de UX/sucesso (3), ações condicionais nos 3 estados + impacto + 409 irreversível (6).
+- **`npm run lint`** (oxlint) — sem erros nem warnings.
+
+Verificação visual no navegador (dev server, sem backend): identidade Horizon (header preto/amarelo, marca, botão de ação amarelo), estados de carregamento e erro, modal "Nova empresa" com marcadores de obrigatório, **validação de UX por campo** (erros em vermelho + borda), e **responsividade mobile** (375px, filtros empilhados). Evidência capturada nos screenshots do ticket.
+
 ## Verificação manual necessária
 
-Comportamentos não automatizáveis, a confirmar por uma pessoa na conclusão da feature (ticket 04-T9), rodando via Docker contra a API real:
-- [ ] **Identidade visual Horizon:** paleta aplicada, texto preto sobre amarelo, contraste adequado.
+Comportamentos que dependem da API real (rodar via Docker: `docker compose up --build`) ou de uma pessoa:
+- [x] **Identidade visual Horizon** — verificada no dev server (paleta, texto preto sobre amarelo).
+- [x] **Responsividade** — verificada a 375px e desktop.
+- [x] **Validação de formulário por campo** — verificada visualmente.
 - [ ] **Logo no cabeçalho:** substituir o fallback textual pelo arquivo real (dependência: usuário fornece a logo) e conferir que não há distorção/recoloração.
-- [ ] **Responsividade:** layout coerente em telas pequenas e grandes.
-- [ ] **Acessibilidade:** foco de teclado visível ao navegar por tabela, filtros, formulário e diálogos.
-- [ ] **Fluxo ponta a ponta:** criar → editar → inativar (ver aviso de impacto) → excluir → restaurar → excluir definitivamente, observando que a lista atualiza sem reload e o feedback aparece a cada ação.
+- [ ] **Acessibilidade — foco de teclado visível:** navegar por Tab em filtros, tabela, formulário e diálogos (o CSS `:focus-visible` está aplicado; falta a conferência manual).
+- [ ] **Fluxo ponta a ponta com dados reais (via Docker):** listar (paginação/filtros) → criar → editar → inativar (ver aviso de impacto) → excluir → restaurar → excluir definitivamente, observando que a lista atualiza **sem reload** e o feedback (toast) aparece a cada ação.
 
 ## Histórico de rodadas
 

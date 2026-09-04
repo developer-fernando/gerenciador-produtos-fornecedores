@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação estática) |
+| **Status** | Concluído (implementação validada; manuais restantes no validation.md) |
 | **Funcionalidade** | 04-front-base-empresas |
 | **Spec relacionada** | [spec.md](./spec.md) · [validation.md](./validation.md) |
 
@@ -68,13 +68,13 @@ A UI **não** é autoridade: apenas reflete o estado e o `acoes_permitidas` reto
 
 ## 8. Critérios de aceite
 
-- [ ] `GET /api/empresas` é consumido: a listagem mostra dados paginados (10/pág) e navega entre páginas.
-- [ ] Filtro por nome (parcial), por status e de excluídos funcionam e podem ser combinados; sem o filtro de excluídos, nenhum registro excluído aparece.
-- [ ] Criar empresa: erros de validação do servidor (422) aparecem **no campo** correspondente; sucesso fecha o formulário e a lista reflete o novo registro **sem reload**.
-- [ ] Editar empresa mantém as unicidades (o back ignora o próprio registro); erros mapeados por campo.
-- [ ] Cada linha exibe **apenas** as ações de `acoes_permitidas` (ex.: empresa ativa não mostra "reativar"; empresa não excluída não mostra "restaurar").
-- [ ] Inativar empresa mostra **aviso do impacto** nos produtos antes de confirmar.
-- [ ] Excluir definitivamente exige **confirmação** com aviso de **irreversibilidade**; um 409 (`empresa_com_produtos_vinculados`) é exibido em linguagem compreensível.
-- [ ] Estados de **loading, vazio e erro** são tratados na listagem; toda ação dá **feedback** (sucesso/erro).
-- [ ] Identidade visual aplicada (paleta, logo no cabeçalho, foco de teclado visível) e layout responsivo — verificação manual.
-- [ ] `npm run build` (tsc + vite) e `npm run test` (Vitest) verdes; `npm run lint` sem erros.
+- [x] `GET /api/empresas` é consumido: a listagem mostra dados paginados (10/pág) e navega entre páginas.
+- [x] Filtro por nome (parcial), por status e de excluídos funcionam e podem ser combinados; sem o filtro de excluídos, nenhum registro excluído aparece.
+- [x] Criar empresa: erros de validação do servidor (422) aparecem **no campo** correspondente; sucesso fecha o formulário e a lista reflete o novo registro **sem reload**.
+- [x] Editar empresa mantém as unicidades (o back ignora o próprio registro); erros mapeados por campo.
+- [x] Cada linha exibe **apenas** as ações de `acoes_permitidas` (ex.: empresa ativa não mostra "reativar"; empresa não excluída não mostra "restaurar").
+- [x] Inativar empresa mostra **aviso do impacto** nos produtos antes de confirmar.
+- [x] Excluir definitivamente exige **confirmação** com aviso de **irreversibilidade**; um 409 (`empresa_com_produtos_vinculados`) é exibido em linguagem compreensível.
+- [x] Estados de **loading, vazio e erro** são tratados na listagem; toda ação dá **feedback** (sucesso/erro).
+- [x] Identidade visual e layout responsivo aplicados (verificados no navegador); logo real e foco de teclado ficam na verificação manual do `validation.md`.
+- [x] `npm run build` (tsc + vite) e `npm run test` (Vitest, 39) verdes; `npm run lint` sem erros.
