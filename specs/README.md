@@ -123,7 +123,8 @@ Cada funcionalidade registra o resultado em `specs/NN-.../validation.md` (rubric
 | 00 | **Fundação de dados** | Migrations + Models de `empresas` e `produtos` (schema, FK, índices, soft delete, `excluido_em_cascata`). |
 | 01 | **Empresas (API)** | CRUD + status + exclusão lógica/restauração + exclusão física (bloqueio) + listagem/filtros + **cascatas disparadas pela empresa** (inativar/excluir/restaurar → produtos). |
 | 02 | **Produtos (API)** | CRUD + vínculo com empresa apta + status + exclusão lógica/restauração + exclusão física + regras do lado do produto (reativação/restauração exigem empresa apta). |
-| 03 | **Front — base + Empresas** | Shell da SPA (layout, cliente API, TanStack Query) + telas de Empresas. |
-| 04 | **Front — Produtos** | Telas de Produtos + seletor de empresa apta + ações condicionais. |
+| 03 | **Correções de back-end (hardening)** | Achados da validação da implementação: handler de erros padronizado (404/500 sem vazar detalhes), CORS restrito, transações no `ProdutoService`, índice `deleted_at`, ajustes de documentação. |
+| 04 | **Front — base + Empresas** | Shell da SPA (layout, cliente API, TanStack Query) + telas de Empresas. |
+| 05 | **Front — Produtos** | Telas de Produtos + seletor de empresa apta + ações condicionais. |
 
 > O recorte pode ser ajustado conforme avançamos; a tabela reflete o plano atual.
