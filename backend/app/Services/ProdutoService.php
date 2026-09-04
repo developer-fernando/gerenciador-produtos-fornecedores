@@ -6,6 +6,7 @@ use App\Exceptions\RegraDeNegocioException;
 use App\Models\Produto;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
 
 class ProdutoService
 {
@@ -127,10 +128,12 @@ class ProdutoService
             throw RegraDeNegocioException::registroExcluido();
         }
 
-        $produto->update(['excluido_em_cascata' => false]);
-        $produto->delete();
+        return DB::transaction(function () use ($produto) {
+            $produto->update(['excluido_em_cascata' => false]);
+            $produto->delete();
 
-        return $produto->load($this->comEmpresa());
+            return $produto->load($this->comEmpresa());
+        });
     }
 
     /**
@@ -150,13 +153,18 @@ class ProdutoService
             throw RegraDeNegocioException::empresaExcluida();
         }
 
-        $produto->restore();
+        return DB::transaction(function () use ($produto, $empresa) {
+            $produto->restore();
 
-        if ($empresa->status !== 'Ativo') {
-            $produto->update(['status' => 'Inativo']);
-        }
+            // Reset da marca de cascata (simetria/robustez) e ajuste de status à aptidão.
+            $dados = ['excluido_em_cascata' => false];
+            if ($empresa->status !== 'Ativo') {
+                $dados['status'] = 'Inativo';
+            }
+            $produto->update($dados);
 
-        return $produto->load($this->comEmpresa());
+            return $produto->load($this->comEmpresa());
+        });
     }
 
     /**
