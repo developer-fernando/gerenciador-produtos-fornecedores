@@ -60,7 +60,7 @@ Referência: [docs/14-estrategia-de-testes.md](../../docs/14-estrategia-de-teste
 ## 7. Tickets
 
 - [x] **00-T1** — Infra de testes (Pest + banco MySQL) — _Pest 4 instalado (require-dev) e inicializado (`tests/Pest.php`); `phpunit.xml` forçado para `DB_CONNECTION=mysql` / `DB_DATABASE=horizon_testing` (`force="true"`, para nunca usar o banco de desenvolvimento); `php artisan test` verde._
-- [ ] **00-T2** — Migration `empresas` — _tabela criada com campos, índices únicos (`cnpj`, `email`), `status`, `softDeletes` e timestamps; `migrate` roda._
+- [x] **00-T2** — Migration `empresas` — _tabela criada com campos, índices únicos (`cnpj`, `email`), `status`, `softDeletes` e timestamps; `migrate` roda (verificado via `SHOW COLUMNS`/`SHOW INDEX`)._
 - [ ] **00-T3** — Migration `produtos` — _tabela criada com FK `empresa_id` (constrained), `preco` decimal(12,2), `codigo_interno`, `excluido_em_cascata`, único composto `(empresa_id, codigo_interno)`, `status`, `softDeletes`, índices; `migrate` roda._
 - [ ] **00-T4** — Model `Empresa` — _`SoftDeletes`, `$fillable`, `$casts`, `hasMany(Produto)`._
 - [ ] **00-T5** — Model `Produto` — _`SoftDeletes`, `$fillable`, `$casts` (`preco` decimal, `excluido_em_cascata` bool), `belongsTo(Empresa)`._
