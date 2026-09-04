@@ -106,7 +106,7 @@ Camada executável ([AGENTS §Testes front](../../AGENTS.md) — Vitest + RTL + 
 
 > Cada ticket é pequeno e verificável. Marcar ao concluir; o commit referencia o ID.
 
-- [ ] **04-T1** — Deps + tooling: adicionar libs (runtime e teste), script `test`, config Vitest/jsdom/setup, remover boilerplate do Vite — _`npm install` ok; `npm run build` e `npm run test` (vazio) verdes; app sobe limpo._
+- [x] **04-T1** — Deps + tooling: adicionar libs (runtime e teste), script `test`, config Vitest/jsdom/setup, remover boilerplate do Vite — _`npm install` ok; `npm run build`, `npm run test` (1 smoke) e `npm run lint` verdes; app sobe limpo._
 - [ ] **04-T2** — `styles/` (tokens da paleta + global, foco visível) + `app/` (providers Query+Router, rota `/`, layout com `Header`/logo) — _app renderiza o shell com identidade Horizon; verificação visual._
 - [ ] **04-T3** — `lib/`: `http.ts` (axios + baseURL), `errors.ts` (normalização), `queryClient.ts` + testes de `errors.ts` (422/409/404/500/rede) — _testes verdes._
 - [ ] **04-T4** — `shared/`: `format.ts` (+ testes) e componentes base (`Table`/`Pagination`, `StatusBadge`, `Modal`, `ConfirmDialog`, `FormField`, `Toast`) — _formatters testados; **teste do `StatusBadge`** (Ativo/Inativo/Excluído distintos) verde; componentes renderizam._
