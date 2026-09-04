@@ -115,4 +115,55 @@ class EmpresaService
 
         return $empresa->loadCount('produtos');
     }
+
+    /**
+     * Exclusão lógica da empresa com cascata: os produtos não excluídos são
+     * marcados com `excluido_em_cascata = true` e excluídos logicamente (transacional).
+     */
+    public function excluir(int $id): Empresa
+    {
+        $empresa = Empresa::withTrashed()->findOrFail($id);
+
+        if ($empresa->trashed()) {
+            throw RegraDeNegocioException::registroExcluido();
+        }
+
+        return DB::transaction(function () use ($empresa) {
+            // Marca e exclui em cascata apenas os produtos ainda não excluídos.
+            $empresa->produtos()->update(['excluido_em_cascata' => true]);
+            $empresa->produtos()->delete();
+            $empresa->delete();
+
+            return $empresa->loadCount('produtos');
+        });
+    }
+
+    /**
+     * Restauração da empresa: restaura apenas os produtos excluídos pela cascata
+     * (`excluido_em_cascata = true`), limpando a marca. Os excluídos individualmente
+     * permanecem excluídos (transacional).
+     */
+    public function restaurar(int $id): Empresa
+    {
+        $empresa = Empresa::withTrashed()->findOrFail($id);
+
+        if (! $empresa->trashed()) {
+            throw new RegraDeNegocioException('A empresa não está excluída.', 'registro_nao_excluido');
+        }
+
+        return DB::transaction(function () use ($empresa) {
+            $empresa->restore();
+
+            $empresa->produtos()
+                ->onlyTrashed()
+                ->where('excluido_em_cascata', true)
+                ->restore();
+
+            $empresa->produtos()
+                ->where('excluido_em_cascata', true)
+                ->update(['excluido_em_cascata' => false]);
+
+            return $empresa->loadCount('produtos');
+        });
+    }
 }

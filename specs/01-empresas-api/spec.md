@@ -72,7 +72,7 @@ Feature tests (Pest + `RefreshDatabase`, MySQL de testes) — [docs/14](../../do
 - [x] **01-T3** — `EmpresaResource` (payload padronizado + `excluido` + `produtos_count` + `acoes_permitidas` derivadas do estado) — verificado nos 4 estados via tinker, incluindo excluída com/sem produtos.
 - [x] **01-T4** — `EmpresaService`: create/update/show/list (paginação 10 + filtros nome/status/excluídos; `produtos_count`/`produtos_total`; editar empresa excluída → 409) — verificado via tinker.
 - [x] **01-T5** — `EmpresaService`: inativar (cascata nos produtos) / reativar (sem cascata) — transacional; revalidação 409 em empresa excluída — verificado via tinker.
-- [ ] **01-T6** — `EmpresaService`: exclusão lógica (cascata + `excluido_em_cascata`) / restauração (seletiva) — transacional.
+- [x] **01-T6** — `EmpresaService`: exclusão lógica (cascata + `excluido_em_cascata`) / restauração seletiva — transacional; verificado via tinker (restaura só os da cascata; individual permanece excluído).
 - [ ] **01-T7** — `EmpresaService`: exclusão física — permitida **apenas** quando a empresa está **excluída logicamente** (senão 409 `registro_nao_excluido`) **e** sem produto vinculado, incl. excluído (senão 409 `empresa_com_produtos_vinculados`).
 - [x] **01-T8** — Padronização de erros de regra de negócio: `RegraDeNegocioException` com método `render()` retornando `{message, code}` + status (aproveita o `shouldRenderJsonWhen` já existente no `bootstrap/app.php`); factories `registroNaoExcluido`/`empresaComProdutosVinculados`/`registroExcluido` (verificado via tinker: 409 + JSON).
 - [ ] **01-T9** — `EmpresaController` (fino) + `routes/api.php` + **registro do grupo `api` no `bootstrap/app.php`** (`withRouting(api: ...)`); smoke test de que os endpoints respondem (não 404).
