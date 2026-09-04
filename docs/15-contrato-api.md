@@ -28,6 +28,7 @@ Saída padronizada por **API Resource** (ver [09](09-arquitetura-backend.md#padr
   "telefone": "11912345678",
   "status": "Ativo",
   "excluido": false,
+  "produtos_count": 3,
   "created_at": "2026-09-04T12:00:00Z",
   "updated_at": "2026-09-04T12:00:00Z",
   "deleted_at": null,
@@ -217,11 +218,11 @@ Saída padronizada por **API Resource** (ver [09](09-arquitetura-backend.md#padr
 **Produto**
 | Estado | editar | inativar | reativar | excluir | restaurar | excluir_definitivamente |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|
-| Ativo, não excluído (empresa apta) | ✅ | ✅ | — | ✅ | — | — |
-| Inativo, não excluído | ✅ | — | ✅ *(se empresa apta)* | ✅ | — | — |
+| Ativo, não excluído | ✅ *(se empresa apta)* | ✅ | — | ✅ | — | — |
+| Inativo, não excluído | ✅ *(se empresa apta)* | — | ✅ *(se empresa apta)* | ✅ | — | — |
 | Excluído logicamente | — | — | — | — | ✅ *(se empresa não excluída)* | ✅ |
 
-> Estas regras derivam de [02-regras-de-negocio.md](02-regras-de-negocio.md). A UI usa `acoes_permitidas`, mas o **servidor revalida** a regra ao executar a ação (a UI não é autoridade).
+> **`editar` e `reativar` de produto exigem empresa apta** (ativa e não excluída) — [docs/02 §5](02-regras-de-negocio.md#5-regras-por-operação-sobre-produto). Estas regras derivam de [02-regras-de-negocio.md](02-regras-de-negocio.md). A UI usa `acoes_permitidas`, mas o **servidor revalida** a regra ao executar a ação (a UI não é autoridade).
 
 ## Comportamento das ações de ciclo de vida
 
