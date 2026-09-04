@@ -128,4 +128,4 @@ Cada funcionalidade registra o resultado em `specs/NN-.../validation.md` (rubric
 | 05 | **Front — Produtos** | ✅ Concluído | Telas de Produtos + seletor de empresa apta + ações condicionais. |
 | — | **Processo — Continuidade entre LLMs** | ✅ Concluído | Camada de continuidade (não é feature de produto): `ESTADO.md` vivo, protocolo de cold-start no `AGENTS.md`, mecânica tool-agnóstica. Ver [`continuidade-entre-llms/`](continuidade-entre-llms/spec.md). |
 
-> O recorte pode ser ajustado conforme avançamos; a tabela reflete o plano atual. A coluna **Status** é a fonte que o [`ESTADO.md`](../ESTADO.md) espelha.
+> Recorte **encerrado**: 00–05 e a camada de continuidade estão concluídos. A coluna **Status** é a fonte que o [`ESTADO.md`](../ESTADO.md) espelha.

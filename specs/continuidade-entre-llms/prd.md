@@ -53,9 +53,9 @@ Não altera regras de negócio do produto. Preserva e referencia o fluxo existen
 
 ## 8. Critérios de aceite
 
-- [ ] Uma LLM nova, lendo apenas os arquivos indicados, identifica em poucos minutos a **fase**, a **feature atual** e o **próximo ticket**, sem acessar a conversa anterior.
-- [ ] O `AGENTS.md` (e um ponteiro no `README.md`) explicita a **ordem de leitura** e as **regras de retomada e atualização**.
-- [ ] A descrição da mecânica de validação **não pressupõe subagente**: um verificador em contexto novo (outra sessão/modelo) é suficiente para cumprir o portão.
-- [ ] `ESTADO.md` contém as seções "onde paramos" e "próximo passo" e uma tabela de progresso coerente com `specs/README.md` e os checkboxes das specs.
-- [ ] Nenhum dos novos artefatos **duplica** conteúdo de `docs/` (checagem: apontam por link, não recopiam).
-- [ ] A regra "todo ticket atualiza o `ESTADO.md`" está registrada no fluxo (`AGENTS.md`/`specs/README.md`).
+- [x] Uma LLM nova, lendo apenas os arquivos indicados, identifica em poucos minutos a **fase**, a **feature atual** e o **próximo ticket**, sem acessar a conversa anterior.
+- [x] O `AGENTS.md` (e um ponteiro no `README.md`) explicita a **ordem de leitura** e as **regras de retomada e atualização**.
+- [x] A descrição da mecânica de validação **não pressupõe subagente**: um verificador em contexto novo (outra sessão/modelo) é suficiente para cumprir o portão.
+- [x] `ESTADO.md` contém as seções "onde paramos" e "próximo passo" e uma tabela de progresso coerente com `specs/README.md` e os checkboxes das specs.
+- [x] Nenhum dos novos artefatos **duplica** conteúdo de `docs/` (checagem: apontam por link, não recopiam).
+- [x] A regra "todo ticket atualiza o `ESTADO.md`" está registrada no fluxo (`AGENTS.md`/`specs/README.md`).

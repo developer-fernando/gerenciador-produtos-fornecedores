@@ -62,7 +62,7 @@ frontend/   → SPA (Single Page Application) em React
 
 ## Como o material de referência do Sênior foi tratado
 
-As orientações do dev Sênior ([references/](../references/)) foram avaliadas à luz do escopo. Resumo do que foi **adotado**, **adaptado** ou **não adotado** (detalhes nos documentos de cada camada):
+Orientações externas de arquitetura Laravel (camadas Service/Repository/DTO, JWT, índices e Lazy Loading) foram avaliadas à luz do escopo e **internalizadas** aqui. Resumo do que foi **adotado**, **adaptado** ou **não adotado** (detalhes nos documentos de cada camada):
 
 | Recomendação do Sênior | Tratamento neste projeto |
 |---|---|

@@ -2,7 +2,7 @@
 
 Definições de performance (back e front), adequadas ao escopo — sem otimização prematura. Legenda em [08-arquitetura-geral.md](08-arquitetura-geral.md#legenda-de-origem-das-decisões).
 
-> ⚠️ O desafio **não** define metas de performance. As definições abaixo são **boas práticas** aplicadas com bom senso, evitando complexidade desnecessária. Alinhadas à referência de performance do Sênior ([references/performance-orientacoes-dev-senior.md](../references/performance-orientacoes-dev-senior.md)).
+> ⚠️ O desafio **não** define metas de performance. As definições abaixo são **boas práticas** aplicadas com bom senso, evitando complexidade desnecessária (índices, PK/FK, paginação, atenção ao Lazy Loading).
 
 ## Back-end (Laravel)
 
@@ -12,7 +12,7 @@ Definições de performance (back e front), adequadas ao escopo — sem otimiza�
 - **Índices** em: `empresa_id`, colunas de unicidade (`cnpj`, `email`, `(empresa_id, codigo_interno)`) e colunas usadas em filtros/listagens (`status`, `deleted_at`, `nome`). Ver [03-modelagem.md](03-modelagem.md#índices-e-unicidade-nível-de-banco).
 
 ### Consultas — evitar N+1 (Lazy Loading)
-🧭 A referência do Sênior destaca a atenção ao **Lazy Loading** do Eloquent. Definição do projeto:
+🧭 Atenção ao **Lazy Loading** do Eloquent. Definição do projeto:
 - Ao listar produtos com a empresa (ou empresas com contagem de produtos), usar **eager loading** (`with('empresa')` / `withCount('produtos')`) para evitar o problema **N+1**.
 - **Cuidado com API Resources:** não tocar relacionamentos não carregados dentro do `toArray()` em listas (causa N+1). Carregar o que o Resource precisa na query.
 - 🧭 Selecionar apenas as colunas necessárias quando fizer diferença.

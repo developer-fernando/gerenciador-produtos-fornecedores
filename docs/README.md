@@ -13,7 +13,7 @@ Base documental do sistema de gerenciamento de produtos e fornecedores. Cada arq
 | [05-ux-e-interface.md](05-ux-e-interface.md) | Fluxos de uso, requisitos de interface, estados e identidade visual. |
 | [06-requisitos-tecnicos.md](06-requisitos-tecnicos.md) | Stack, arquitetura, o que fazer no back-end e no front-end, convenções e decisões técnicas. |
 | [07-criterios-de-avaliacao.md](07-criterios-de-avaliacao.md) | Critérios, pesos, itens eliminatórios e mapa de prioridades. |
-| [08-arquitetura-geral.md](08-arquitetura-geral.md) | Visão de arquitetura da aplicação como um todo; comunicação front↔back; stack; como as recomendações do Sênior foram tratadas. |
+| [08-arquitetura-geral.md](08-arquitetura-geral.md) | Visão de arquitetura da aplicação como um todo; comunicação front↔back; stack; o que foi adotado, adaptado ou descartado (Service, sem Repository, sem DTO dedicado). |
 | [09-arquitetura-backend.md](09-arquitetura-backend.md) | Arquitetura Laravel: camadas, fluxo da requisição, endpoints e padronização de respostas. |
 | [10-arquitetura-frontend.md](10-arquitetura-frontend.md) | Arquitetura React: estrutura feature-based, estado de servidor (TanStack Query), consumo da API. |
 | [11-seguranca.md](11-seguranca.md) | Segurança (back e front); autenticação fora de escopo; o que permanece obrigatório. |
@@ -33,10 +33,6 @@ Base documental do sistema de gerenciamento de produtos e fornecedores. Cada arq
 - **Critérios de avaliação?** → [07-criterios-de-avaliacao.md](07-criterios-de-avaliacao.md)
 - **UX e identidade visual?** → [05-ux-e-interface.md](05-ux-e-interface.md)
 
-## Material de referência
-
-A pasta [`references/`](../references/) guarda a fonte do desafio e as orientações do desenvolvedor Sênior (arquitetura, segurança e performance) — material de consulta, **não** decisões. As decisões derivadas dele estão nos documentos `08`–`12`.
-
 ## Convenção de marcação
 
 Em toda a documentação:
@@ -45,7 +41,7 @@ Em toda a documentação:
 - 🟦 **Decisão de projeto** — não definida no enunciado; fechada por lógica/boas práticas dentro do escopo. Revisável se o responsável orientar diferente.
 - ⚠️ **Não exigido / fora de escopo** — não consta no enunciado; não implementar/tratar como obrigatório.
 
-> Fonte primária de tudo: `Desafio-Tecnico-Desenvolvedor-FullStack-Pleno` (PDF/TXT), em [`references/`](../references/). O conteúdo destes documentos preserva fielmente o enunciado; onde houve lacuna, a decisão está marcada como 🟦.
+> Fonte primária: o enunciado do desafio técnico (Gerenciador de Produtos e Fornecedores). O conteúdo destes documentos preserva o enunciado; onde houve lacuna, a decisão está marcada como 🟦. Orientações de arquitetura, segurança e performance foram avaliadas e **internalizadas** em `08`–`12` (o que foi adotado, adaptado ou descartado).
 
 ## Stack
 

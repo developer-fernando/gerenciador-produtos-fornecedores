@@ -7,9 +7,9 @@ Definições de segurança da aplicação (back e front). Legenda em [08-arquite
 🟩 O desafio define que **autenticação não é necessária**. Portanto:
 
 - **Não** haverá login, tokens (JWT), sessão de usuário, nem middleware de autenticação.
-- Os códigos **HTTP 401 (não autenticado)** e **403 (sem permissão)**, descritos na referência de segurança do Sênior ([references/seguranca-orientacoes-dev-senior.md](../references/seguranca-orientacoes-dev-senior.md)), **não fazem parte** da superfície desta API.
+- Os códigos **HTTP 401 (não autenticado)** e **403 (sem permissão)** **não fazem parte** da superfície desta API (não há autenticação).
 
-🟦🧭 **Princípio aproveitado da referência:** a ideia de **respostas de erro padronizadas e previsíveis** foi adotada — aplicada aos erros que realmente existem no escopo (validação, regra de negócio, não encontrado, erro interno). Ver [09-arquitetura-backend.md](09-arquitetura-backend.md#padronização-de-respostas).
+🟦🧭 **Respostas de erro padronizadas e previsíveis** — aplicadas aos erros que realmente existem no escopo (validação, regra de negócio, não encontrado, erro interno). Ver [09-arquitetura-backend.md](09-arquitetura-backend.md#padronização-de-respostas).
 
 > Caso a autenticação viesse a ser exigida no futuro, o caminho natural seria **Laravel Sanctum** (SPA) com um middleware de sessão/token e os padrões 401/403 — mas isso está **explicitamente fora do escopo** atual e não deve ser implementado.
 

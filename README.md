@@ -75,22 +75,27 @@ Visão completa em [`docs/08-arquitetura-geral.md`](docs/08-arquitetura-geral.md
 
 ```
 .
-├── backend/            # API Laravel
+├── backend/                 # API Laravel
 │   ├── app/
-│   │   ├── Http/Controllers/   # controllers finos
-│   │   ├── Http/Requests/      # validação de entrada
-│   │   ├── Http/Resources/     # formatação de saída
-│   │   ├── Services/           # regras de negócio e cascatas
-│   │   └── Models/             # Empresa, Produto
-│   └── database/migrations/    # schema versionado
-├── frontend/           # SPA React (Vite)
+│   │   ├── Exceptions/      # RegraDeNegocioException
+│   │   ├── Http/            # Controllers, Requests, Resources
+│   │   ├── Models/          # Empresa, Produto
+│   │   └── Services/        # regras de negócio e cascatas
+│   ├── bootstrap/app.php    # rotas e tratamento de exceções
+│   └── database/            # migrations, factories, seeders
+├── frontend/                # SPA React (Vite)
 │   └── src/
-│       ├── app/                # providers e rotas
-│       ├── lib/                # cliente axios, query client
-│       ├── features/           # empresas/, produtos/ (por domínio)
-│       └── shared/             # componentes e utilitários reutilizáveis
-├── docker/             # scripts de apoio (init do banco)
-├── docs/               # documentação do projeto
+│       ├── app/             # Header (logo), providers, rotas
+│       ├── assets/          # logotipo Horizon
+│       ├── features/        # empresas/, produtos/
+│       ├── lib/             # axios, queryClient
+│       ├── shared/          # Table, FiltrosBar, icons, formatadores
+│       └── styles/          # tema Horizon
+├── docker/mysql/            # init.sql (banco de testes)
+├── docs/                    # fonte de verdade (regras, arquitetura, contrato)
+├── specs/                   # PRD + Spec + tickets da implementação
+├── AGENTS.md                # guia de desenvolvimento (inclusive assistido por IA)
+├── ESTADO.md                # snapshot vivo: fase atual e próximo passo
 ├── docker-compose.yml
 └── .env.example
 ```
@@ -121,9 +126,10 @@ Ao final:
 Comandos úteis:
 
 ```bash
-docker compose up -d        # sobe em segundo plano
-docker compose logs -f      # acompanha os logs
-docker compose down         # para os containers
+docker compose up -d                                              # sobe em segundo plano
+docker compose logs -f                                            # acompanha os logs
+docker compose down                                               # para os containers
+docker compose exec backend php artisan migrate:fresh --seed      # recria o banco com dados de exemplo
 ```
 
 ## Testes
@@ -131,6 +137,7 @@ docker compose down         # para os containers
 ```bash
 docker compose exec backend php artisan test     # back-end (Pest)
 docker compose exec frontend npm run test        # front-end (Vitest)
+docker compose exec frontend npm run lint        # front-end (oxlint)
 ```
 
 Os testes do back-end usam um banco de dados MySQL de testes dedicado, criado automaticamente pelo ambiente. Estratégia e cobertura mínima em [`docs/14-estrategia-de-testes.md`](docs/14-estrategia-de-testes.md).
@@ -148,7 +155,7 @@ Os testes do back-end usam um banco de dados MySQL de testes dedicado, criado au
 - **Simplicidade:** soluções adequadas ao escopo, evitando complexidade desnecessária.
 - **Git:** commits organizados e descritivos.
 
-O guia central para desenvolvimento (inclusive assistido por IA) está em [`AGENTS.md`](AGENTS.md).
+O guia central para desenvolvimento (inclusive assistido por IA) está em [`AGENTS.md`](AGENTS.md). Instruções específicas de cada projeto: [`backend/README.md`](backend/README.md) e [`frontend/README.md`](frontend/README.md).
 
 ## Documentação
 

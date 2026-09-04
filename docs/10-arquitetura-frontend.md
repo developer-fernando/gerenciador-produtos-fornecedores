@@ -1,6 +1,6 @@
 # Arquitetura do Front-end (React)
 
-Como o React será organizado. Requisitos de UX/interface em [05-ux-e-interface.md](05-ux-e-interface.md). Legenda em [08-arquitetura-geral.md](08-arquitetura-geral.md#legenda-de-origem-das-decisões).
+Como o React está organizado. Requisitos de UX/interface em [05-ux-e-interface.md](05-ux-e-interface.md). Legenda em [08-arquitetura-geral.md](08-arquitetura-geral.md#legenda-de-origem-das-decisões).
 
 ## Base
 
@@ -14,13 +14,14 @@ Como o React será organizado. Requisitos de UX/interface em [05-ux-e-interface.
 
 ```
 frontend/src/
-├── app/            → providers (QueryClient, Router), definição de rotas
+├── app/            → Header (logo), providers (QueryClient, Router), rotas
+├── assets/         → horizon-logo.jpg
 ├── lib/            → cliente axios, configuração, queryClient, helpers de erro
 ├── features/
 │   ├── empresas/   → components/, hooks/ (useEmpresas, useEmpresaMutations), api.ts, types.ts
 │   └── produtos/   → components/, hooks/, api.ts, types.ts
-├── shared/         → componentes de UI reutilizáveis (Table, Modal, StatusBadge, ConfirmDialog,
-│                     FormField), formatadores (cnpj, telefone, preço), constantes
+├── shared/         → UI reutilizável (Table, FiltrosBar, Modal, StatusBadge, ConfirmDialog,
+│                     FormField, Pagination, Toast), icons.tsx, formatadores (cnpj, telefone, preço)
 └── styles/         → estilos globais e tema (paleta Horizon)
 ```
 
@@ -52,7 +53,7 @@ frontend/src/
 
 🧭
 - Componentes **pequenos e focados**; lógica de dados em **hooks** por feature (`useEmpresas`, `useProdutos`).
-- Componentes compartilhados em `shared/`: tabela com paginação, badge de status (Ativo/Inativo/Excluído), diálogo de confirmação, campos de formulário com exibição de erro.
+- Componentes compartilhados em `shared/`: tabela com paginação, barra de filtros (`FiltrosBar`), badge de status (Ativo/Inativo/Excluído), diálogo de confirmação, campos de formulário com exibição de erro, ícones de ação (`icons.tsx`).
 - 🟩 **Ações condicionais:** os botões por registro (editar, inativar, reativar, excluir, restaurar, excluir definitivamente) aparecem **somente quando permitidos** — a UI decide a partir do estado do registro retornado pela API, nunca oferecendo ação que a regra recusaria.
 - 🟩 **Seletor de empresa** no cadastro de produto exibe **apenas empresas aptas** (ativas e não excluídas).
 

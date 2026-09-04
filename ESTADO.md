@@ -8,20 +8,21 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase atual** | Fechamento da entrega |
-| **Feature em andamento** | — (05 concluída) |
-| **Próxima feature** | — (recorte das features de produto encerrado) |
-| **Backend** | ✅ Completo e no ar (features 00–03; 45 testes) |
-| **Último commit relevante** | `38ca0f3`+ — 05-T1..T5; 05-T6 neste commit |
+| **Fase atual** | Entrega concluída |
+| **Feature em andamento** | — (00–05 concluídas) |
+| **Próxima feature** | — (recorte de produto encerrado) |
+| **Backend** | ✅ Completo (features 00–03; Pest no ambiente Docker) |
+| **Frontend** | ✅ Completo (features 04–05; 59 testes Vitest) |
+| **Último commit relevante** | neste commit — README/docs/AGENTS alinhados; pasta `references/` removida |
 | **Atualizado em** | 2026-09-04 |
 
 ## Onde paramos
 
-Backend (00–03), front de Empresas (04) e front de Produtos (05) concluídos. Feature 05: 59 testes Vitest, build/lint verdes, E2E via Docker conferido (criar→editar vínculo→inativar→excluir→restaurar; seletor só com empresas aptas). Recorte das funcionalidades de produto **encerrado**.
+Backend (00–03), front de Empresas (04) e front de Produtos (05) concluídos. Recorte das funcionalidades de produto **encerrado**. Fechamento da entrega: README raiz revisado, READMEs de `backend/` e `frontend/` alinhados ao projeto, pasta `references/` removida, `docs/` / `AGENTS.md` / specs atualizados ao código.
 
 ## Próximo passo
 
-**Fechamento da entrega** (fora do recorte 00–05): revisar o README de execução (clone-and-run + estrutura). Logotipo real aplicado no cabeçalho; foco de teclado em Produtos conferido no 05-T6.
+Nada pendente no recorte 00–05. A entrega está pronta para avaliação (`cp .env.example .env && docker compose up --build`).
 
 ## Progresso
 
@@ -40,7 +41,7 @@ Espelha a coluna **Status** do [recorte em `specs/README.md`](specs/README.md#re
 ## Como retomar
 
 1. Leia o protocolo de cold-start em [`AGENTS.md` §0](AGENTS.md#0-continuidade--comece-aqui) (ordem de leitura + regras).
-2. Abra a spec da feature atual/próxima em `specs/` e continue pelo próximo ticket não marcado.
+2. Se houver trabalho novo, abra a spec correspondente em `specs/` e continue pelo próximo ticket não marcado.
 3. Ao concluir cada ticket: commit `[NN-TX]` + **atualize este `ESTADO.md`** + marque o checkbox na spec (e o `validation.md` quando aplicável).
 
 ## Como rodar (dev)

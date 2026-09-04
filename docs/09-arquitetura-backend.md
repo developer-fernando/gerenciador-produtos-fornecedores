@@ -1,6 +1,6 @@
 # Arquitetura do Back-end (Laravel)
 
-Como o Laravel será organizado. Regras de negócio a implementar em [02-regras-de-negocio.md](02-regras-de-negocio.md); modelo de dados em [03-modelagem.md](03-modelagem.md). Legenda em [08-arquitetura-geral.md](08-arquitetura-geral.md#legenda-de-origem-das-decisões).
+Como o Laravel está organizado. Regras de negócio em [02-regras-de-negocio.md](02-regras-de-negocio.md); modelo de dados em [03-modelagem.md](03-modelagem.md). Legenda em [08-arquitetura-geral.md](08-arquitetura-geral.md#legenda-de-origem-das-decisões).
 
 ## Camadas e responsabilidades
 
@@ -14,7 +14,7 @@ Como o Laravel será organizado. Regras de negócio a implementar em [02-regras-
 | **Service** | 🟩 Regras de negócio, cascatas, **transações**, orquestração de persistência via Eloquent. | Formatar HTTP/JSON. |
 | **Model (Eloquent)** | Acesso a dados, relacionamentos, `SoftDeletes`, scopes. | Regra de negócio de aplicação. |
 | **API Resource** | 🧭 Transforma Model → JSON padronizado (saída). | Buscar dados / regra. |
-| **Exception Handler** | 🧭 Converte exceções em respostas de erro padronizadas. | — |
+| **Tratamento de exceções** | 🧭 `bootstrap/app.php` (`withExceptions`) converte exceções em respostas de erro padronizadas. `RegraDeNegocioException` → 409. | — |
 
 ## Fluxo de uma requisição
 
@@ -25,7 +25,7 @@ Route → (Middleware) → Controller → Form Request (valida entrada)
                                    → JSON padronizado
 ```
 
-> Comparação com o fluxo do Sênior (`Route → Controller → Repository → Controller → Service`): aqui o acesso a dados fica **no Service via Eloquent** (sem Repository), e a padronização de saída é feita por **API Resource** (no lugar de um DTO de saída).
+> Em relação a um fluxo com Repository + DTO: aqui o acesso a dados fica **no Service via Eloquent** (sem Repository), e a padronização de saída é feita por **API Resource** (no lugar de um DTO de saída). Ver [08](08-arquitetura-geral.md#como-o-material-de-referência-do-sênior-foi-tratado).
 
 ## Estrutura de pastas (essencial)
 
@@ -37,7 +37,8 @@ backend/app/
 │   └── Resources/         → EmpresaResource, ProdutoResource
 ├── Services/              → EmpresaService, ProdutoService (regras + cascatas)
 ├── Models/                → Empresa, Produto
-└── Exceptions/            → exceção(ões) de regra de negócio + Handler
+└── Exceptions/            → RegraDeNegocioException
+bootstrap/app.php          → withExceptions (404/500 padronizados; defere 422)
 database/migrations/       → empresas, produtos (índices e soft delete)
 routes/api.php
 config/cors.php
@@ -87,6 +88,6 @@ Rotas equivalentes para `produtos`. 🟦 Nomes finais e verbos podem ser ajustad
 
 **Não encontrado** — HTTP **404**; **erro interno** — HTTP **500** com mensagem genérica (sem detalhes internos).
 
-🟩 Todas as mensagens em **português**, voltadas ao usuário final, **sem expor detalhes internos** (regra do desafio). A conversão de exceções em respostas padronizadas fica no **Exception Handler**.
+🟩 Todas as mensagens em **português**, voltadas ao usuário final, **sem expor detalhes internos** (regra do desafio). A conversão de exceções em respostas padronizadas fica em `bootstrap/app.php` (`withExceptions`).
 
-> Observação: como não há autenticação, os códigos **401/403** (descritos na referência do Sênior) **não fazem parte** da superfície da API. Ver [11-seguranca.md](11-seguranca.md).
+> Observação: como não há autenticação, os códigos **401/403** **não fazem parte** da superfície da API. Ver [11-seguranca.md](11-seguranca.md).

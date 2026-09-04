@@ -2,7 +2,7 @@
 
 Guia central para qualquer IA (ou pessoa) que trabalhe neste projeto. Consolida contexto, arquitetura, regras e decisões já definidas. **Leia este arquivo antes de qualquer alteração.**
 
-A documentação completa vive em [`docs/`](docs/README.md) e é a **fonte de verdade**; este arquivo resume o essencial e aponta para o detalhe. O enunciado e as orientações do dev Sênior estão em [`references/`](references/) (consulta, não decisão).
+A documentação completa vive em [`docs/`](docs/README.md) e é a **fonte de verdade**; este arquivo resume o essencial e aponta para o detalhe. Decisões de arquitetura, segurança e performance estão em [`docs/08`](docs/08-arquitetura-geral.md)–[`12`](docs/12-performance.md).
 
 **Legenda:** 🟩 requisito do desafio · 🟦 decisão de projeto · 🧭 boa prática/recomendação técnica · ⚠️ fora de escopo.
 
@@ -75,7 +75,7 @@ Dois projetos separados no mesmo repositório; **React (SPA)** consome **Laravel
   - **Service:** regras de negócio, **cascatas** e **transações** (`DB::transaction`).
   - **Model (Eloquent):** dados, relacionamentos, `SoftDeletes`.
   - **API Resource:** formata a resposta JSON.
-  - **Exception Handler:** converte exceções em erros padronizados.
+  - **Exceções:** `bootstrap/app.php` (`withExceptions`) converte exceções em erros padronizados; `RegraDeNegocioException` para conflito de regra (409).
 - **Princípios a respeitar:** separação de responsabilidades; controllers finos; regra de negócio no Service; **consistência transacional**; **simplicidade** (sem over-engineering).
 
 Detalhes: [docs/09-arquitetura-backend.md](docs/09-arquitetura-backend.md) · [docs/10-arquitetura-frontend.md](docs/10-arquitetura-frontend.md).
@@ -94,7 +94,8 @@ backend/app/
 │   └── Resources/         → EmpresaResource, ProdutoResource
 ├── Services/              → EmpresaService, ProdutoService (regras + cascatas)
 ├── Models/                → Empresa, Produto
-└── Exceptions/            → exceção de regra de negócio + Handler
+└── Exceptions/            → RegraDeNegocioException
+bootstrap/app.php          → withExceptions (404/500 padronizados)
 database/migrations/       → empresas, produtos (índices + soft delete)
 routes/api.php · config/cors.php
 ```
@@ -102,12 +103,13 @@ routes/api.php · config/cors.php
 ### Front-end (React) — feature-based, profundidade rasa
 ```
 frontend/src/
-├── app/       → providers (QueryClient, Router), rotas
+├── app/       → Header (logo), providers (QueryClient, Router), rotas
+├── assets/    → horizon-logo.jpg
 ├── lib/       → cliente axios, queryClient, helpers de erro
 ├── features/
 │   ├── empresas/  → components/, hooks/, api.ts, types.ts
 │   └── produtos/  → components/, hooks/, api.ts, types.ts
-├── shared/    → UI reutilizável (Table, Modal, StatusBadge, ConfirmDialog, FormField), formatadores
+├── shared/    → Table, FiltrosBar, Modal, StatusBadge, ConfirmDialog, FormField, icons.tsx, formatadores
 └── styles/    → tema/paleta Horizon
 ```
 

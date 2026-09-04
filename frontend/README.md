@@ -1,32 +1,42 @@
-# React + TypeScript + Vite
+# Frontend — SPA React
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Interface do Gerenciador de Produtos e Fornecedores: listagens, formulários e ações condicionais de **Empresas** e **Produtos**, consumindo a API Laravel.
 
-Currently, two official plugins are available:
+A forma prevista de subir o projeto é o **Docker na raiz do repositório**. Instruções completas (clone-and-run, portas, `VITE_API_URL`) estão no [README da raiz](../README.md).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Como rodar (via Docker)
 
-## React Compiler
+Na raiz:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+cp .env.example .env
+docker compose up --build
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+App em http://localhost:5173. A API precisa estar no ar (http://localhost:8000/api).
+
+## Testes e lint
+
+```bash
+docker compose exec frontend npm run test    # Vitest
+docker compose exec frontend npm run lint    # oxlint
+docker compose exec frontend npm run build   # tsc + Vite
+```
+
+Vitest + React Testing Library + MSW. Estratégia em [`docs/14-estrategia-de-testes.md`](../docs/14-estrategia-de-testes.md).
+
+## Estrutura
+
+```
+src/
+├── app/         → Header (logotipo), providers, rotas
+├── assets/      → horizon-logo.jpg
+├── lib/         → axios, queryClient, helpers de erro
+├── features/
+│   ├── empresas/
+│   └── produtos/
+├── shared/      → Table, FiltrosBar, Modal, icons, formatadores
+└── styles/      → tema Horizon
+```
+
+Arquitetura: [`docs/10-arquitetura-frontend.md`](../docs/10-arquitetura-frontend.md). UX: [`docs/05-ux-e-interface.md`](../docs/05-ux-e-interface.md).
