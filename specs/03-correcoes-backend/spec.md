@@ -52,7 +52,7 @@ Não introduz regra nova. Preserva o contrato de erros de negócio (409/422 com 
 
 ## 6. Tickets
 
-- [ ] **03-T1** — Handler global de exceções: 404 (`NotFoundHttpException`, cobrindo `ModelNotFoundException` convertida) + genérico (500/HTTP status) **deferindo `ValidationException`/`HttpResponseException`/`AuthenticationException`**, sem detalhes internos. Testes: 404 limpo, **500 limpo** (rota de teste que lança exceção) e **regressão 422** (validação continua retornando `errors`).
+- [x] **03-T1** — Handler global de exceções (404/500 padronizados sem detalhes; defere 422/409) + testes (404 limpo, 500 limpo sem vazar, regressão 422 e 409) — 4 passed; 404 vivo confirmado.
 - [ ] **03-T2** — `config/cors.php` restrito ao `FRONTEND_URL` + teste de feature (`assertHeader('Access-Control-Allow-Origin', ...)`) e verificação por curl.
 - [ ] **03-T3** — Transações em `ProdutoService::excluir()`/`restaurar()` + reset de `excluido_em_cascata` na restauração.
 - [ ] **03-T4** — Migration de índice `deleted_at` em `empresas` e `produtos` (verificado por `SHOW INDEX`).
