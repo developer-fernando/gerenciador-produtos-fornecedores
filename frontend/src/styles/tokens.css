@@ -1,0 +1,72 @@
+/* Design tokens — identidade visual Horizon (docs/05).
+   Paleta oficial + tokens semânticos de layout, status e feedback. */
+:root {
+  /* Paleta oficial Horizon */
+  --horizon-amarelo: #fbe509;
+  --horizon-preto: #000000;
+  --horizon-grafite: #141414;
+  --horizon-cinza-claro: #f7f7f7;
+  --horizon-branco: #ffffff;
+
+  /* Papéis semânticos */
+  --cor-fundo: var(--horizon-cinza-claro);
+  --cor-superficie: var(--horizon-branco);
+  --cor-texto: var(--horizon-grafite);
+  --cor-texto-suave: #5b5b5b;
+  --cor-borda: #e4e4e4;
+
+  /* Ação = amarelo; texto sobre amarelo é sempre preto (docs/05) */
+  --cor-acao: var(--horizon-amarelo);
+  --cor-acao-hover: #e6d200;
+  --cor-acao-texto: var(--horizon-preto);
+
+  /* Cabeçalho (barra preta com marca) */
+  --cor-header-fundo: var(--horizon-preto);
+  --cor-header-texto: var(--horizon-branco);
+
+  /* Status (distinção clara — docs/05): Ativo / Inativo / Excluído */
+  --status-ativo-fundo: #e6f4ea;
+  --status-ativo-texto: #1b5e20;
+  --status-ativo-borda: #b4dcb6;
+  --status-inativo-fundo: #ececec;
+  --status-inativo-texto: #4a4a4a;
+  --status-inativo-borda: #d4d4d4;
+  --status-excluido-fundo: #fdecea;
+  --status-excluido-texto: #b71c1c;
+  --status-excluido-borda: #f5c6c2;
+
+  /* Feedback */
+  --feedback-sucesso: #1b5e20;
+  --feedback-sucesso-fundo: #e6f4ea;
+  --feedback-erro: #b71c1c;
+  --feedback-erro-fundo: #fdecea;
+
+  /* Perigo (ações destrutivas) */
+  --cor-perigo: #b71c1c;
+  --cor-perigo-hover: #931515;
+  --cor-perigo-texto: var(--horizon-branco);
+
+  /* Espaçamento */
+  --esp-1: 4px;
+  --esp-2: 8px;
+  --esp-3: 12px;
+  --esp-4: 16px;
+  --esp-5: 24px;
+  --esp-6: 32px;
+  --esp-7: 48px;
+
+  /* Raio e sombra */
+  --raio-1: 4px;
+  --raio-2: 8px;
+  --raio-3: 12px;
+  --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
+  --sombra-2: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  /* Foco de teclado visível (acessibilidade — docs/05) */
+  --foco-cor: var(--horizon-preto);
+  --foco-anel: 0 0 0 3px rgba(0, 0, 0, 0.35);
+
+  /* Tipografia */
+  --fonte: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --largura-conteudo: 1120px;
+}
