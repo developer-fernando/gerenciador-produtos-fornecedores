@@ -22,13 +22,11 @@ export function FormField({
 }) {
   return (
     <div className={styles.field}>
-      <label htmlFor={id} className={styles.label}>
+      <label
+        htmlFor={id}
+        className={`${styles.label} ${required ? styles.obrigatorio : ''}`}
+      >
         {label}
-        {required && (
-          <span className={styles.obrigatorio} aria-hidden="true">
-            *
-          </span>
-        )}
       </label>
       {children}
       {error && (

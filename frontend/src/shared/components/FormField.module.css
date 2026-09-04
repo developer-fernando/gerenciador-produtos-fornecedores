@@ -11,9 +11,9 @@
   color: var(--cor-texto);
 }
 
-.obrigatorio {
+.obrigatorio::after {
+  content: ' *';
   color: var(--cor-perigo);
-  margin-left: 2px;
 }
 
 .controle {

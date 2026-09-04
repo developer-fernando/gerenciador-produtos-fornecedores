@@ -2,24 +2,32 @@ import { useState } from 'react'
 import { Button } from '../../../shared/components/Button'
 import { Pagination } from '../../../shared/components/Pagination'
 import { useEmpresas } from '../hooks'
-import type { EmpresaFiltros } from '../types'
+import type { Empresa, EmpresaFiltros } from '../types'
+import { EmpresaFormModal } from './EmpresaFormModal'
 import { EmpresasFiltros } from './EmpresasFiltros'
 import styles from './EmpresasPage.module.css'
 import { EmpresasTabela } from './EmpresasTabela'
 
 /**
  * Tela de Empresas: filtros + listagem paginada com estados de
- * carregamento/vazio/erro. As ações por registro entram na 04-T8 e o
- * formulário de criar/editar na 04-T7.
+ * carregamento/vazio/erro + criar/editar. As ações por registro entram na 04-T8.
  */
 export function EmpresasPage() {
   const [filtros, setFiltros] = useState<EmpresaFiltros>({ page: 1 })
   const { data, isLoading, isError, refetch } = useEmpresas(filtros)
 
+  const [formAberto, setFormAberto] = useState(false)
+  const [empresaEdicao, setEmpresaEdicao] = useState<Empresa | null>(null)
+
   // Ao filtrar, volta para a primeira página; a paginação só troca `page`.
   const atualizarFiltro = (parcial: Partial<EmpresaFiltros>) =>
     setFiltros((f) => ({ ...f, ...parcial, page: 1 }))
   const irParaPagina = (page: number) => setFiltros((f) => ({ ...f, page }))
+
+  const abrirNova = () => {
+    setEmpresaEdicao(null)
+    setFormAberto(true)
+  }
 
   const vazio = !data || data.data.length === 0
 
@@ -27,6 +35,9 @@ export function EmpresasPage() {
     <section>
       <header className={styles.cabecalho}>
         <h1 className={styles.titulo}>Empresas</h1>
+        <Button variante="primario" onClick={abrirNova}>
+          Nova empresa
+        </Button>
       </header>
 
       <EmpresasFiltros filtros={filtros} onChange={atualizarFiltro} />
@@ -51,6 +62,14 @@ export function EmpresasPage() {
           <EmpresasTabela empresas={data.data} />
           <Pagination meta={data.meta} onPageChange={irParaPagina} />
         </>
+      )}
+
+      {formAberto && (
+        <EmpresaFormModal
+          key={empresaEdicao?.id ?? 'nova'}
+          empresa={empresaEdicao}
+          onClose={() => setFormAberto(false)}
+        />
       )}
     </section>
   )
