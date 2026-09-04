@@ -158,4 +158,19 @@ class ProdutoService
 
         return $produto->load($this->comEmpresa());
     }
+
+    /**
+     * Exclusão física (definitiva): permitida apenas quando o produto já está
+     * excluído logicamente.
+     */
+    public function forcar(int $id): void
+    {
+        $produto = Produto::withTrashed()->findOrFail($id);
+
+        if (! $produto->trashed()) {
+            throw RegraDeNegocioException::registroNaoExcluido();
+        }
+
+        $produto->forceDelete();
+    }
 }
