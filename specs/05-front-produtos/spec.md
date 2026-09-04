@@ -96,7 +96,7 @@ Camada executável (Vitest + RTL + user-event + MSW):
 
 > Cada ticket é pequeno e verificável. Commit por ticket `[05-TX]`; ao concluir, atualizar `ESTADO.md` + checkbox + `validation.md` quando aplicável.
 
-- [ ] **05-T1** — Navegação: nav "Empresas/Produtos" no layout (NavLink com estado ativo) + rota `/produtos` (placeholder) — _navegar entre as duas áreas funciona; build/test/lint verdes._
+- [x] **05-T1** — Navegação: nav "Empresas/Produtos" no layout (NavLink com estado ativo) + rota `/produtos` (placeholder) — _nav funciona (verificado no navegador: "Produtos" ativo em amarelo); build/test/lint verdes (39)._
 - [ ] **05-T2** — Base + `features/produtos` camada de dados: mover `AcoesPermitidas` para `shared/types.ts` e atualizar os imports que hoje o pegam de `features/empresas/types` (ao menos `features/empresas/types.ts`, `.../components/AcoesEmpresa.test.tsx`, `test/fixtures.ts`); `types.ts`, `api.ts` (inclui `listarEmpresasAptas()` iterando páginas), `hooks.ts` (`useProdutos`, `useProdutoMutations`, `useEmpresasAptas`) — _tsc compila; suíte da 04 (39) segue verde após o move; hooks montados._
 - [ ] **05-T3** — Produtos listagem: `ProdutosPage`+`ProdutosFiltros`+`ProdutosTabela` (empresa, preço formatado, badge, código), paginação, filtros, estados — _testes de página (loading/vazio/erro/paginação/filtros/invalidação) verdes._
 - [ ] **05-T4** — Produto formulário: `ProdutoFormModal` + `EmpresaAptaSelect` (todas as aptas via iteração de páginas; `empresaVinculada` na edição; vazio bloqueia submit), validação por campo + 422, trocar empresa na edição — _testes do seletor (>10 aptas, empresaVinculada, vazio) e do form (422→campo, sucesso) verdes._

@@ -46,3 +46,29 @@
   width: auto;
   display: block;
 }
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  margin-left: var(--esp-5);
+}
+
+.navLink {
+  color: var(--cor-header-texto);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: var(--esp-2) var(--esp-3);
+  border-radius: var(--raio-1);
+  border-bottom: 2px solid transparent;
+}
+
+.navLink:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navLinkAtivo {
+  color: var(--horizon-amarelo);
+  border-bottom-color: var(--horizon-amarelo);
+}

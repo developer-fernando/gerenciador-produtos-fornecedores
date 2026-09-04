@@ -1,5 +1,8 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import styles from './Header.module.css'
+
+const navItemClass = ({ isActive }: { isActive: boolean }) =>
+  `${styles.navLink} ${isActive ? styles.navLinkAtivo : ''}`
 
 // Ponto único para trocar pela logo real quando o arquivo for fornecido:
 // basta importar o asset e atribuir a `logoSrc`. Enquanto null, usa o
@@ -22,6 +25,14 @@ export function Header() {
             </>
           )}
         </Link>
+        <nav className={styles.nav} aria-label="Seções">
+          <NavLink to="/empresas" className={navItemClass}>
+            Empresas
+          </NavLink>
+          <NavLink to="/produtos" className={navItemClass}>
+            Produtos
+          </NavLink>
+        </nav>
       </div>
     </header>
   )
