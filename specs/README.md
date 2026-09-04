@@ -53,9 +53,9 @@ Uma Spec **não** é válida porque a IA afirmou que está. Ela só é válida q
 | Papel | Quem | Contexto |
 |---|---|---|
 | **Autor** | sessão principal | escreve/corrige o PRD + Spec |
-| **Verificador** | **subagente dedicado em contexto novo**, preferencialmente em **modelo diferente** | audita sem herdar o raciocínio do autor |
+| **Verificador** | uma **verificação independente em contexto novo** — uma sessão/chat separada, preferencialmente em **modelo diferente** (um **subagente** é *uma* implementação possível; onde não houver subagentes, abrir outra sessão/chat e colar Spec + rubrica cumpre o mesmo papel) | audita sem herdar o raciocínio do autor |
 
-O contexto novo evita "pontos cegos compartilhados" entre autor e verificador.
+O **contexto novo** (independentemente da ferramenta) evita "pontos cegos compartilhados" entre autor e verificador.
 
 ### Fontes de evidência
 

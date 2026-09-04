@@ -6,7 +6,7 @@
 | **Artefatos avaliados** | [prd.md](./prd.md) · [spec.md](./spec.md) |
 | **Veredito atual** | Pendente · Reprovado (há bloqueantes) · **Aprovado** |
 | **Rodadas** | <n> |
-| **Verificador** | subagente em contexto novo · modelo: <modelo> |
+| **Verificador** | verificação independente em contexto novo (sessão/chat separada; subagente é uma opção) · modelo: <modelo> |
 
 ## Rubrica (rodada <n>)
 
