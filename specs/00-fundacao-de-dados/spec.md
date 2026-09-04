@@ -63,7 +63,7 @@ Referência: [docs/14-estrategia-de-testes.md](../../docs/14-estrategia-de-teste
 - [x] **00-T2** — Migration `empresas` — _tabela criada com campos, índices únicos (`cnpj`, `email`), `status`, `softDeletes` e timestamps; `migrate` roda (verificado via `SHOW COLUMNS`/`SHOW INDEX`)._
 - [x] **00-T3** — Migration `produtos` — _tabela criada com FK `empresa_id` (constrained/restrictOnDelete), `preco` decimal(12,2), `codigo_interno`, `excluido_em_cascata`, único composto `(empresa_id, codigo_interno)`, `status`, `softDeletes`, índices; `migrate` roda (verificado via `SHOW COLUMNS`/`SHOW INDEX`)._
 - [x] **00-T4** — Model `Empresa` — _`SoftDeletes`, `$fillable`, `$casts`, `hasMany(Produto)` (relacionamento verificado via tinker)._
-- [ ] **00-T5** — Model `Produto` — _`SoftDeletes`, `$fillable`, `$casts` (`preco` decimal, `excluido_em_cascata` bool), `belongsTo(Empresa)`._
+- [x] **00-T5** — Model `Produto` — _`SoftDeletes`, `$fillable`, `$casts` (`preco` decimal:2, `excluido_em_cascata` bool), `belongsTo(Empresa)` (verificado via tinker)._
 - [ ] **00-T6** — Factories `EmpresaFactory` e `ProdutoFactory` — _geram dados válidos; states: inativo, excluído, excluído-em-cascata._
 - [ ] **00-T7** — Seeders — _`DatabaseSeeder` popula empresas e produtos de exemplo via factories; `migrate:fresh --seed` roda sem erro._
 - [ ] **00-T8** — Teste de fundação (Pest) — _relacionamento 1—N e soft delete básicos passando no banco de testes MySQL._
