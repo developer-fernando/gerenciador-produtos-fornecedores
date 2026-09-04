@@ -201,6 +201,7 @@ Saída padronizada por **API Resource** (ver [09](09-arquitetura-backend.md#padr
 | `empresa_com_produtos_vinculados` | Exclusão física de empresa com produtos (mesmo excluídos). | 409 |
 | `registro_nao_excluido` | Exclusão definitiva de registro que não está excluído logicamente. | 409 |
 | `empresa_excluida` | Restaurar produto cuja empresa está excluída. | 409 |
+| `registro_excluido` | Operação (inativar/reativar/editar) sobre um registro já excluído logicamente. | 409 |
 
 ## Derivação de `acoes_permitidas`
 
