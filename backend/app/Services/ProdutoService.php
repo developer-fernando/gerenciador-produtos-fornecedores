@@ -76,4 +76,42 @@ class ProdutoService
 
         return $produto->load($this->comEmpresa());
     }
+
+    /**
+     * Inativa o produto (não permitido em produto excluído).
+     */
+    public function inativar(int $id): Produto
+    {
+        $produto = Produto::withTrashed()->findOrFail($id);
+
+        if ($produto->trashed()) {
+            throw RegraDeNegocioException::registroExcluido();
+        }
+
+        $produto->update(['status' => 'Inativo']);
+
+        return $produto->load($this->comEmpresa());
+    }
+
+    /**
+     * Reativa o produto — só permitido se a empresa vinculada estiver apta
+     * (ativa e não excluída) e o produto não estiver excluído.
+     */
+    public function reativar(int $id): Produto
+    {
+        $produto = Produto::withTrashed()->with($this->comEmpresa())->findOrFail($id);
+
+        if ($produto->trashed()) {
+            throw RegraDeNegocioException::registroExcluido();
+        }
+
+        $empresa = $produto->empresa;
+        if ($empresa === null || $empresa->trashed() || $empresa->status !== 'Ativo') {
+            throw RegraDeNegocioException::empresaInativaOuExcluida();
+        }
+
+        $produto->update(['status' => 'Ativo']);
+
+        return $produto->load($this->comEmpresa());
+    }
 }
