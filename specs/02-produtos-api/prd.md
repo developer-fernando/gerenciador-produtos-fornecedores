@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação autônoma, rodada 2) |
+| **Status** | Concluído |
 | **Funcionalidade** | 02-produtos-api |
 | **Spec relacionada** | [spec.md](./spec.md) · [validation.md](./validation.md) |
 
@@ -59,14 +59,14 @@ Origem em [docs/02-regras-de-negocio.md](../../docs/02-regras-de-negocio.md):
 
 ## 8. Critérios de aceite
 
-- [ ] `POST /api/produtos` cria produto válido vinculado a empresa apta (201) e rejeita dados inválidos (422 por campo).
-- [ ] Criar/editar produto com **empresa inativa ou excluída** é rejeitado (422 `empresa_inativa_ou_excluida`).
-- [ ] Código interno é único **por empresa**, inclusive contra excluídos; na edição, ignora o próprio; o mesmo código é permitido em empresas diferentes.
-- [ ] Editar pode alterar o `empresa_id` para outra empresa apta, revalidando o código interno na empresa destino ([docs/02 §5](../../docs/02-regras-de-negocio.md#5-regras-por-operação-sobre-produto)).
-- [ ] Preço deve ser > 0 com 2 casas; nome 3–150; descrição ≤ 2.000.
-- [ ] `PATCH /api/produtos/{id}/inativar` inativa; `reativar` só é permitido se a empresa estiver apta (senão 422 `empresa_inativa_ou_excluida`).
-- [ ] `DELETE /api/produtos/{id}` exclui logicamente (individual, `excluido_em_cascata = false`); `restaurar` só se a empresa não estiver excluída (senão 409 `empresa_excluida`), retornando o produto Inativo quando a empresa estiver inativa.
-- [ ] `DELETE /api/produtos/{id}/forcar` retorna 409 (`registro_nao_excluido`) se não estiver excluído; remove fisicamente (204) caso contrário.
-- [ ] `GET /api/produtos` retorna paginado (10/página) com filtros nome/status/excluídos e a empresa vinculada (resumo), sem N+1; por padrão sem excluídos.
-- [ ] Respostas padronizadas (Resource + `acoes_permitidas`); operar produto excluído revalida no servidor (409 `registro_excluido`).
-- [ ] Todos os testes de feature da 02 passam (`php artisan test`).
+- [x] `POST /api/produtos` cria produto válido vinculado a empresa apta (201) e rejeita dados inválidos (422 por campo).
+- [x] Criar/editar produto com **empresa inativa ou excluída** é rejeitado (422 `empresa_inativa_ou_excluida`).
+- [x] Código interno é único **por empresa**, inclusive contra excluídos; na edição, ignora o próprio; o mesmo código é permitido em empresas diferentes.
+- [x] Editar pode alterar o `empresa_id` para outra empresa apta, revalidando o código interno na empresa destino ([docs/02 §5](../../docs/02-regras-de-negocio.md#5-regras-por-operação-sobre-produto)).
+- [x] Preço deve ser > 0 com 2 casas; nome 3–150; descrição ≤ 2.000.
+- [x] `PATCH /api/produtos/{id}/inativar` inativa; `reativar` só é permitido se a empresa estiver apta (senão 422 `empresa_inativa_ou_excluida`).
+- [x] `DELETE /api/produtos/{id}` exclui logicamente (individual, `excluido_em_cascata = false`); `restaurar` só se a empresa não estiver excluída (senão 409 `empresa_excluida`), retornando o produto Inativo quando a empresa estiver inativa.
+- [x] `DELETE /api/produtos/{id}/forcar` retorna 409 (`registro_nao_excluido`) se não estiver excluído; remove fisicamente (204) caso contrário.
+- [x] `GET /api/produtos` retorna paginado (10/página) com filtros nome/status/excluídos e a empresa vinculada (resumo), sem N+1; por padrão sem excluídos.
+- [x] Respostas padronizadas (Resource + `acoes_permitidas`); operar produto excluído revalida no servidor (409 `registro_excluido`).
+- [x] Todos os testes de feature da 02 passam (`php artisan test`).

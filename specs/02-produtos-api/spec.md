@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação autônoma, rodada 2) |
+| **Status** | Concluído (todos os tickets; suíte verde) |
 | **Funcionalidade** | 02-produtos-api |
 | **PRD relacionado** | [prd.md](./prd.md) · [validation.md](./validation.md) |
 
@@ -71,17 +71,17 @@ Feature tests (Pest + `RefreshDatabase`, MySQL de testes) — [docs/14](../../do
 - [x] **02-T6** — `ProdutoService`: inativar / reativar (exige empresa apta) + revalidação 409 em produto excluído — verificado via tinker.
 - [x] **02-T7** — `ProdutoService`: exclusão lógica individual (`excluido_em_cascata=false`) / restauração (exige empresa não excluída; status ajustado à aptidão) — verificado via tinker.
 - [x] **02-T8** — `ProdutoService`: exclusão física (só de produto já excluído) + `ProdutoController` + rotas — smoke test OK (9 rotas; POST 201, GET 200).
-- [ ] **02-T9** — Testes de feature cobrindo todas as regras acima.
+- [x] **02-T9** — Testes de feature (14 casos, 60 asserções) cobrindo todas as regras acima.
 
 ## 8. Definition of Done
 
-- [ ] Todos os tickets concluídos.
-- [ ] Endpoints conforme o contrato; respostas padronizadas (Resource + `acoes_permitidas`; erros 422/409 com `code`).
-- [ ] Validação server-side completa; mensagens em português, sem detalhes internos.
-- [ ] Regras do lado do produto corretas (empresa apta, código único por empresa, restauração condicionada) e exclusão física só de excluído.
-- [ ] `php artisan test` verde (02 + 01 + 00).
-- [ ] Sem credenciais/segredos no código.
-- [ ] Critérios de aceite do PRD atendidos.
+- [x] Todos os tickets concluídos.
+- [x] Endpoints conforme o contrato; respostas padronizadas (Resource + `acoes_permitidas`; erros 422/409 com `code`).
+- [x] Validação server-side completa; mensagens em português, sem detalhes internos.
+- [x] Regras do lado do produto corretas (empresa apta, código único por empresa, restauração condicionada) e exclusão física só de excluído.
+- [x] `php artisan test` verde (39 passed / 142 asserções: 02 + 01 + 00).
+- [x] Sem credenciais/segredos no código.
+- [x] Critérios de aceite do PRD atendidos.
 
 ## 9. Decisões e riscos locais
 

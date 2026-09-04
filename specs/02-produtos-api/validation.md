@@ -44,6 +44,14 @@ Dois achados **cosméticos/não-bloqueantes** corrigidos após a aprovação:
 
 Nenhuma nesta fase (pré-implementação) — backend, tudo coberto por testes automatizados. A verificação executável ocorrerá na implementação.
 
+## Camada executável (conclusão)
+
+Após a aprovação estática, a implementação foi validada por **ground truth executável**:
+- **Testes:** `EmpresaApta` (2) + API de Produtos — **14 casos / 60 asserções**, cobrindo criação/validação (422 por campo), empresa apta (vínculo rejeitado se inativa/excluída), código interno único por empresa incl. excluídos, troca de vínculo revalidando no destino, status (reativar exige empresa apta), exclusão lógica individual + restauração condicionada (mantém/força Inativo/bloqueia com empresa excluída), exclusão física (409/204), revalidação 409 em produto excluído e listagem (paginação 10 + filtros + empresa vinculada).
+- **Suíte completa:** `php artisan test` → **39 passed / 142 asserções** (02 + 01 + 00), sem regressões.
+
+Todos os tickets (02-T1…02-T9) concluídos e o DoD atendido. **Funcionalidade 02 concluída.**
+
 ## Histórico de rodadas
 
 | Rodada | Veredito | Bloqueantes | Observação |
