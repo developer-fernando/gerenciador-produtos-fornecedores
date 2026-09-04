@@ -54,4 +54,23 @@ class RegraDeNegocioException extends Exception
             'registro_excluido',
         );
     }
+
+    /** Criar/editar/reativar produto vinculado a empresa inativa ou excluída (422). */
+    public static function empresaInativaOuExcluida(): self
+    {
+        return new self(
+            'A empresa vinculada deve estar ativa e não excluída.',
+            'empresa_inativa_ou_excluida',
+            422,
+        );
+    }
+
+    /** Restaurar produto cuja empresa está excluída logicamente (409). */
+    public static function empresaExcluida(): self
+    {
+        return new self(
+            'Não é possível restaurar o produto: a empresa vinculada está excluída. Restaure a empresa antes.',
+            'empresa_excluida',
+        );
+    }
 }
