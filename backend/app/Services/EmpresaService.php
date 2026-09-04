@@ -166,4 +166,23 @@ class EmpresaService
             return $empresa->loadCount('produtos');
         });
     }
+
+    /**
+     * Exclusão física (definitiva): permitida apenas quando a empresa está
+     * excluída logicamente E não possui nenhum produto vinculado (incl. excluídos).
+     */
+    public function forcar(int $id): void
+    {
+        $empresa = Empresa::withTrashed()->findOrFail($id);
+
+        if (! $empresa->trashed()) {
+            throw RegraDeNegocioException::registroNaoExcluido();
+        }
+
+        if ($empresa->produtos()->withTrashed()->exists()) {
+            throw RegraDeNegocioException::empresaComProdutosVinculados();
+        }
+
+        $empresa->forceDelete();
+    }
 }
