@@ -1,0 +1,11 @@
+# Normaliza quebras de linha no repositório
+* text=auto
+
+# Scripts de shell DEVEM manter LF (evita quebra do entrypoint no container)
+*.sh text eol=lf
+
+# Arquivos binários
+*.pdf binary
+*.png binary
+*.jpg binary
+*.ico binary
