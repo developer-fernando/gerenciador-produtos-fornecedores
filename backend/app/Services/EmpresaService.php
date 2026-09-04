@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Exceptions\RegraDeNegocioException;
 use App\Models\Empresa;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 
 class EmpresaService
 {
@@ -71,10 +73,45 @@ class EmpresaService
         $empresa = Empresa::withTrashed()->findOrFail($id);
 
         if ($empresa->trashed()) {
-            throw \App\Exceptions\RegraDeNegocioException::registroExcluido();
+            throw RegraDeNegocioException::registroExcluido();
         }
 
         $empresa->update($dados);
+
+        return $empresa->loadCount('produtos');
+    }
+
+    /**
+     * Inativa a empresa e, em cascata, inativa seus produtos (transacional).
+     */
+    public function inativar(int $id): Empresa
+    {
+        $empresa = Empresa::withTrashed()->findOrFail($id);
+
+        if ($empresa->trashed()) {
+            throw RegraDeNegocioException::registroExcluido();
+        }
+
+        return DB::transaction(function () use ($empresa) {
+            $empresa->update(['status' => 'Inativo']);
+            $empresa->produtos()->update(['status' => 'Inativo']);
+
+            return $empresa->loadCount('produtos');
+        });
+    }
+
+    /**
+     * Reativa a empresa. Os produtos NÃO são reativados automaticamente (regra 3).
+     */
+    public function reativar(int $id): Empresa
+    {
+        $empresa = Empresa::withTrashed()->findOrFail($id);
+
+        if ($empresa->trashed()) {
+            throw RegraDeNegocioException::registroExcluido();
+        }
+
+        $empresa->update(['status' => 'Ativo']);
 
         return $empresa->loadCount('produtos');
     }
