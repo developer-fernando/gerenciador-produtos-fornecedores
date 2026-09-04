@@ -3,6 +3,7 @@ import { Button } from '../../../shared/components/Button'
 import { Pagination } from '../../../shared/components/Pagination'
 import { useEmpresas } from '../hooks'
 import type { Empresa, EmpresaFiltros } from '../types'
+import { AcoesEmpresa } from './AcoesEmpresa'
 import { EmpresaFormModal } from './EmpresaFormModal'
 import { EmpresasFiltros } from './EmpresasFiltros'
 import styles from './EmpresasPage.module.css'
@@ -26,6 +27,10 @@ export function EmpresasPage() {
 
   const abrirNova = () => {
     setEmpresaEdicao(null)
+    setFormAberto(true)
+  }
+  const abrirEdicao = (empresa: Empresa) => {
+    setEmpresaEdicao(empresa)
     setFormAberto(true)
   }
 
@@ -59,7 +64,12 @@ export function EmpresasPage() {
         <div className={styles.estado}>Nenhuma empresa encontrada.</div>
       ) : (
         <>
-          <EmpresasTabela empresas={data.data} />
+          <EmpresasTabela
+            empresas={data.data}
+            acoesSlot={(empresa) => (
+              <AcoesEmpresa empresa={empresa} onEditar={abrirEdicao} />
+            )}
+          />
           <Pagination meta={data.meta} onPageChange={irParaPagina} />
         </>
       )}

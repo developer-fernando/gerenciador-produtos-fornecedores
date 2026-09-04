@@ -1,0 +1,15 @@
+.acoes {
+  display: inline-flex;
+  gap: var(--esp-1);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.impacto {
+  margin-top: var(--esp-3);
+  padding: var(--esp-3);
+  border-radius: var(--raio-1);
+  background: var(--status-inativo-fundo);
+  color: var(--cor-texto);
+  font-size: 14px;
+}

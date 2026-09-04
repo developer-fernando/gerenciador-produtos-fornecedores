@@ -83,6 +83,27 @@ describe('EmpresasPage', () => {
     })
   })
 
+  it('invalida a listagem após uma ação (reflete sem reload) — F1', async () => {
+    const user = userEvent.setup()
+    listar(paginado([fazerEmpresa({ nome: 'Alfa Ltda' })]))
+    server.use(
+      http.delete('*/empresas/:id', () =>
+        HttpResponse.json({ data: fazerEmpresa({ nome: 'Alfa Ltda', excluido: true }) }),
+      ),
+    )
+    renderComProviders(<EmpresasPage />)
+    await screen.findByText('Alfa Ltda')
+    const getsAntes = requisicoes.length
+
+    // Excluir a partir da ação da linha, confirmando no diálogo.
+    await user.click(screen.getByRole('button', { name: 'Excluir' }))
+    const dialogo = screen.getByRole('dialog')
+    await user.click(within(dialogo).getByRole('button', { name: 'Excluir' }))
+
+    // A mutação invalida ['empresas'] → a listagem é refeita (novo GET).
+    await waitFor(() => expect(requisicoes.length).toBeGreaterThan(getsAntes))
+  })
+
   it('exibe o badge de status na linha', async () => {
     listar(paginado([fazerEmpresa({ nome: 'Alfa Ltda', status: 'Inativo' })]))
     renderComProviders(<EmpresasPage />)
