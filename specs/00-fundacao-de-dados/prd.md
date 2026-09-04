@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação autônoma, rodada 2) |
+| **Status** | Concluído |
 | **Funcionalidade** | 00-fundacao-de-dados |
 | **Spec relacionada** | [spec.md](./spec.md) · [validation.md](./validation.md) |
 
@@ -63,11 +63,11 @@ Somente as que o schema garante nesta entrega (as regras de aplicação vêm dep
 
 ## 8. Critérios de aceite
 
-- [ ] `php artisan migrate:fresh` executa sem erros no ambiente Docker.
-- [ ] Tabela `empresas` possui todos os campos e os índices únicos de `cnpj` e `email`.
-- [ ] Tabela `produtos` possui FK `empresa_id`, `preco` decimal(12,2), `excluido_em_cascata` e índice único composto `(empresa_id, codigo_interno)`.
-- [ ] Ambas as tabelas possuem `deleted_at` (soft delete) e timestamps.
-- [ ] `Empresa->produtos` e `Produto->empresa` retornam o relacionamento corretamente.
-- [ ] As factories geram registros válidos e persistíveis.
-- [ ] `php artisan migrate:fresh --seed` popula empresas e produtos de exemplo sem erro.
-- [ ] `php artisan test` executa o teste de fundação (Pest) no banco de testes MySQL e passa.
+- [x] `php artisan migrate:fresh` executa sem erros no ambiente Docker.
+- [x] Tabela `empresas` possui todos os campos e os índices únicos de `cnpj` e `email`.
+- [x] Tabela `produtos` possui FK `empresa_id`, `preco` decimal(12,2), `excluido_em_cascata` e índice único composto `(empresa_id, codigo_interno)`.
+- [x] Ambas as tabelas possuem `deleted_at` (soft delete) e timestamps.
+- [x] `Empresa->produtos` e `Produto->empresa` retornam o relacionamento corretamente.
+- [x] As factories geram registros válidos e persistíveis.
+- [x] `php artisan migrate:fresh --seed` popula empresas e produtos de exemplo sem erro.
+- [x] `php artisan test` executa o teste de fundação (Pest) no banco de testes MySQL e passa.

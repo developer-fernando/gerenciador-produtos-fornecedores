@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação autônoma, rodada 2) |
+| **Status** | Concluído (todos os tickets; verificação executável verde) |
 | **Funcionalidade** | 00-fundacao-de-dados |
 | **PRD relacionado** | [prd.md](./prd.md) · [validation.md](./validation.md) |
 
@@ -66,16 +66,16 @@ Referência: [docs/14-estrategia-de-testes.md](../../docs/14-estrategia-de-teste
 - [x] **00-T5** — Model `Produto` — _`SoftDeletes`, `$fillable`, `$casts` (`preco` decimal:2, `excluido_em_cascata` bool), `belongsTo(Empresa)` (verificado via tinker)._
 - [x] **00-T6** — Factories `EmpresaFactory` e `ProdutoFactory` — _geram dados válidos (CNPJ com dígitos verificadores corretos, verificado); states: inativo/inativa, excluído, excluído-em-cascata._
 - [x] **00-T7** — Seeders — _`DatabaseSeeder` popula empresas e produtos de exemplo via factories (ativos, inativos e excluídos em cascata); `migrate:fresh --seed` roda sem erro (7 empresas / 26 produtos verificados)._
-- [ ] **00-T8** — Teste de fundação (Pest) — _relacionamento 1—N e soft delete básicos passando no banco de testes MySQL._
+- [x] **00-T8** — Teste de fundação (Pest) — _relacionamento 1—N, FK obrigatória, soft delete e distinção de exclusão em cascata passando no banco de testes MySQL (`RefreshDatabase`); suíte verde (6 passed)._
 
 ## 8. Definition of Done
 
-- [ ] Todos os tickets concluídos.
-- [ ] `php artisan migrate:fresh --seed` roda no Docker sem erros e popula dados de exemplo.
-- [ ] Índices/unicidades e FK criados conforme o schema.
-- [ ] Models e factories funcionando.
-- [ ] Pest configurado no banco de testes MySQL; `php artisan test` verde (teste de fundação passando).
-- [ ] Critérios de aceite do PRD atendidos.
+- [x] Todos os tickets concluídos.
+- [x] `php artisan migrate:fresh --seed` roda no Docker sem erros e popula dados de exemplo (7 empresas / 26 produtos).
+- [x] Índices/unicidades e FK criados conforme o schema (verificado via `SHOW COLUMNS`/`SHOW INDEX`).
+- [x] Models e factories funcionando (verificado via tinker).
+- [x] Pest configurado no banco de testes MySQL; `php artisan test` verde (6 passed, incluindo o teste de fundação).
+- [x] Critérios de aceite do PRD atendidos.
 
 ## 9. Decisões e riscos locais
 

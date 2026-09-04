@@ -48,6 +48,14 @@ Checagens determinísticas: sem placeholders; **8 âncoras** de `docs/` verifica
 
 Nenhuma — entrega de schema/model/infra; todos os critérios resolvem em checagens mecânicas (migração, `SHOW INDEX`/`DESCRIBE`, relacionamento, factory, `php artisan test`).
 
+## Camada executável (conclusão)
+
+Após a aprovação estática, a implementação foi validada por **ground truth executável**:
+- `php artisan migrate` / `migrate:fresh --seed` — schema criado e populado (7 empresas / 26 produtos); índices/FK conferidos via `SHOW COLUMNS`/`SHOW INDEX`.
+- `php artisan test` — **6 passed**, incluindo o teste de fundação com `RefreshDatabase` rodando no banco de testes **MySQL** (`horizon_testing`), o que também confirma a conexão real ao banco de testes.
+
+Todos os tickets (00-T1…00-T8) concluídos e o DoD atendido. **Funcionalidade 00 concluída.**
+
 ## Histórico de rodadas
 
 | Rodada | Veredito | Bloqueantes | Observação |
