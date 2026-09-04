@@ -4,8 +4,8 @@
 |---|---|
 | **Funcionalidade** | continuidade-entre-llms |
 | **Artefatos avaliados** | [prd.md](./prd.md) · [spec.md](./spec.md) |
-| **Veredito atual** | **Aprovado** (estático) — rodada 3, 0 bloqueantes |
-| **Rodadas** | 3 |
+| **Veredito atual** | **Concluído** — validação estática aprovada (3 rodadas) + verificação de cold-start (C-T4) bem-sucedida |
+| **Rodadas** | 3 estáticas + 1 verificação de cold-start |
 | **Verificador** | passada de verificação independente em contexto novo · modelo: Sonnet (diferente do autor) |
 
 > Camada de **processo** — verificação documental (não executável). Portão estático libera a implementação das 3 peças.
@@ -42,6 +42,20 @@ Reverificação em contexto novo com **grep** confirmando os **três** locais re
 | 8 | Contradições internas | PASS |
 | 9 | Riscos/lacunas | PASS |
 | 10 | Aderência a boas práticas de handoff | PASS |
+
+## Verificação de cold-start (C-T4) — APROVADO
+
+Após implementar C-T1..C-T3, uma **verificação em contexto novo** simulou uma LLM assumindo o projeto do zero, recebendo **apenas o repositório** e instruída a descobrir sozinha (seguindo o protocolo do próprio projeto) onde o desenvolvimento parou e o próximo passo. Resultado:
+
+- **Ponto de entrada óbvio:** abriu `ESTADO.md` primeiro (auto-referência em `ESTADO.md:3` + ponteiro no `README.md`), sem adivinhar.
+- **Ordem de leitura seguida:** `ESTADO.md` → `AGENTS.md §0` → `docs/README.md` → `specs/README.md` → spec da feature.
+- **Estado identificado corretamente:** backend 00–03 e front 04 concluídos; continuidade em andamento com C-T1/C-T2/C-T3 feitos e **C-T4 pendente**; próxima feature de produto = 05.
+- **Próximo passo concreto correto**, com fonte citada; fluxo, convenção de commit `[NN-TX]`, regra de atualização e hierarquia de autoridade todos localizados.
+- **Sem trava:** concluiu que continuaria o desenvolvimento **sem precisar de ajuda humana**.
+
+Fricções (não-bloqueantes, registradas): (a) o formato exato do registro de C-T4 no `validation.md` não estava pré-modelado — resolvido por analogia com as rodadas anteriores (e por esta própria seção); (b) a Feature 05 ainda não tem PRD/Spec (estado real esperado); (c) sem enforcement automático da regra de atualização (risco N12 já aceito). As `validation.md` históricas das features 00–04 ainda citam "subagente" — correto, são **atas** do que ocorreu, não regra vigente.
+
+**Conclusão:** a camada de continuidade cumpre o objetivo — uma LLM diferente assume o projeto lendo só o repositório. Tickets C-T1..C-T4 concluídos.
 
 ## Histórico de rodadas
 

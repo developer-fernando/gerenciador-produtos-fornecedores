@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Status** | Aprovado (validação estática — pronto para implementar) |
+| **Status** | Concluído (camada implementada; cold-start verificado) |
 | **Funcionalidade** | continuidade-entre-llms (camada de processo, não é feature de produto) |
 | **Spec relacionada** | [spec.md](./spec.md) · [validation.md](./validation.md) |
 

@@ -9,19 +9,19 @@
 | Campo | Valor |
 |---|---|
 | **Fase atual** | Front-end |
-| **Feature em andamento** | Processo — Continuidade entre LLMs (em finalização) |
+| **Feature em andamento** | Nenhuma (próxima a iniciar: 05 — Front: Produtos) |
 | **Próxima feature** | 05 — Front: Produtos |
 | **Backend** | ✅ Completo e no ar (features 00–03; 45 testes) |
-| **Último commit relevante** | `e2ee10d` — PRD + Spec da continuidade (aprovado) |
+| **Último commit relevante** | `[C-T4]` — camada de continuidade concluída |
 | **Atualizado em** | 2026-09-04 |
 
 ## Onde paramos
 
-O backend (00–03) e o front de Empresas (04) estão concluídos, testados (45 + 39 testes) e **rodando integrados** via Docker (`http://localhost:5173` consumindo `http://localhost:8000/api`). A integração ponta a ponta foi verificada com dados reais (seed). Estamos **implementando a camada de continuidade entre LLMs** (plano aprovado em `specs/continuidade-entre-llms/`), para que qualquer LLM assuma o projeto sem perder contexto.
+O backend (00–03) e o front de Empresas (04) estão concluídos, testados (45 + 39 testes) e **rodando integrados** via Docker (`http://localhost:5173` consumindo `http://localhost:8000/api`), verificados com dados reais (seed). A **camada de continuidade entre LLMs está concluída** (`ESTADO.md`, protocolo em `AGENTS.md §0`, mecânica tool-agnóstica) e teve o cold-start verificado por uma sessão independente. Não há feature em andamento.
 
 ## Próximo passo
 
-Concluir os tickets da camada de continuidade (`specs/continuidade-entre-llms/spec.md §7`): **C-T2** (§0 no `AGENTS.md` + ponteiro no `README.md`) → **C-T3** (mecânica tool-agnóstica nos 3 arquivos) → **C-T4** (verificação de cold-start). Depois, iniciar a **Feature 05 — Front: Produtos** pelo fluxo padrão (PRD → Spec → validação autônoma → implementação).
+Iniciar a **Feature 05 — Front: Produtos** pelo fluxo padrão: **PRD → Spec → validação autônoma → implementação por tickets**. Criar `specs/05-front-produtos/` a partir dos templates (`specs/_templates/`), tendo como base [`docs/04-requisitos.md`](docs/04-requisitos.md#produto), [`docs/05-ux-e-interface.md`](docs/05-ux-e-interface.md) e o contrato de produtos em [`docs/15-contrato-api.md`](docs/15-contrato-api.md#endpoints--produtos). Escopo: telas de Produtos + **seletor de empresa apta** (`GET /api/empresas?status=Ativo`) + ações condicionais. Reaproveitar a base do front (lib/http, shared/, TanStack Query, `formatarPreco` já pronto).
 
 ## Progresso
 
@@ -35,7 +35,7 @@ Espelha a coluna **Status** do [recorte em `specs/README.md`](specs/README.md#re
 | 03 | Correções de back-end (hardening) | ✅ Concluído |
 | 04 | Front — base + Empresas | ✅ Concluído |
 | 05 | Front — Produtos | ⬜ A fazer |
-| — | Processo — Continuidade entre LLMs | 🔄 Em andamento |
+| — | Processo — Continuidade entre LLMs | ✅ Concluído |
 
 ## Como retomar
 
