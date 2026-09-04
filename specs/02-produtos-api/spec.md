@@ -63,7 +63,7 @@ Feature tests (Pest + `RefreshDatabase`, MySQL de testes) — [docs/14](../../do
 
 ## 7. Tickets
 
-- [ ] **02-T1** — Regra `EmpresaApta` (empresa existe, ativa e não excluída) + teste.
+- [x] **02-T1** — Regra `EmpresaApta` (empresa existe, ativa e não excluída) + teste (2 passed).
 - [ ] **02-T2** — Form Requests `StoreProdutoRequest`/`UpdateProdutoRequest` (validações; `empresa_id` via `EmpresaApta`; código interno único por empresa incl. excluídos, escopado ao `empresa_id` **enviado** e com `ignore` no update — suporta troca de vínculo revalidando no destino; mensagens pt).
 - [ ] **02-T3** — Estender `RegraDeNegocioException` com `empresaInativaOuExcluida()` (422) e `empresaExcluida()` (409).
 - [ ] **02-T4** — `ProdutoResource` (payload + `empresa` resumo + `excluido` + `acoes_permitidas` derivadas do produto e da aptidão da empresa).
