@@ -70,7 +70,7 @@ Feature tests (Pest + `RefreshDatabase`, MySQL de testes) — [docs/14](../../do
 - [x] **01-T1** — Regra `CnpjValido` (dígitos verificadores) + teste unitário (3 passed).
 - [x] **01-T2** — Form Requests `StoreEmpresaRequest`/`UpdateEmpresaRequest` (normalização cnpj/telefone, validações, unicidade incl. excluídos com `ignore` no update, mensagens em pt) — verificado via tinker (inválido falha nos 5 campos; válido passa).
 - [x] **01-T3** — `EmpresaResource` (payload padronizado + `excluido` + `produtos_count` + `acoes_permitidas` derivadas do estado) — verificado nos 4 estados via tinker, incluindo excluída com/sem produtos.
-- [ ] **01-T4** — `EmpresaService`: create/update/show/list (paginação + filtros nome/status/excluídos; contagem de produtos p/ Resource).
+- [x] **01-T4** — `EmpresaService`: create/update/show/list (paginação 10 + filtros nome/status/excluídos; `produtos_count`/`produtos_total`; editar empresa excluída → 409) — verificado via tinker.
 - [ ] **01-T5** — `EmpresaService`: inativar (cascata nos produtos) / reativar (sem cascata) — transacional.
 - [ ] **01-T6** — `EmpresaService`: exclusão lógica (cascata + `excluido_em_cascata`) / restauração (seletiva) — transacional.
 - [ ] **01-T7** — `EmpresaService`: exclusão física — permitida **apenas** quando a empresa está **excluída logicamente** (senão 409 `registro_nao_excluido`) **e** sem produto vinculado, incl. excluído (senão 409 `empresa_com_produtos_vinculados`).
