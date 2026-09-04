@@ -89,6 +89,25 @@ describe('ProdutosPage', () => {
     })
   })
 
+  it('invalida a listagem após uma ação (reflete sem reload)', async () => {
+    const user = userEvent.setup()
+    listar(paginado([fazerProduto({ nome: 'Cadeira Gamer' })]))
+    server.use(
+      http.delete('*/produtos/:id', () =>
+        HttpResponse.json({ data: fazerProduto({ nome: 'Cadeira Gamer', excluido: true }) }),
+      ),
+    )
+    renderComProviders(<ProdutosPage />, '/produtos')
+    await screen.findByText('Cadeira Gamer')
+    const getsAntes = requisicoes.length
+
+    await user.click(screen.getByRole('button', { name: 'Excluir' }))
+    const dialogo = screen.getByRole('dialog')
+    await user.click(within(dialogo).getByRole('button', { name: 'Excluir' }))
+
+    await waitFor(() => expect(requisicoes.length).toBeGreaterThan(getsAntes))
+  })
+
   it('exibe o badge de status na linha', async () => {
     listar(paginado([fazerProduto({ nome: 'Produto A', status: 'Inativo' })]))
     renderComProviders(<ProdutosPage />, '/produtos')

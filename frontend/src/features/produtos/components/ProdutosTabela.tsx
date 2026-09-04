@@ -8,7 +8,7 @@ import styles from './ProdutosTabela.module.css'
 /**
  * Tabela de produtos. Exibe a empresa vinculada, o preço formatado (BRL), o
  * código interno e o badge de status (com precedência de "Excluído"). A coluna
- * de ações é preenchida via `acoesSlot` (05-T5).
+ * de ações é preenchida via `acoesSlot`.
  */
 export function ProdutosTabela({
   produtos,

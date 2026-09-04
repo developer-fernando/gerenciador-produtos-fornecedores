@@ -3,6 +3,7 @@ import { Button } from '../../../shared/components/Button'
 import { Pagination } from '../../../shared/components/Pagination'
 import { useProdutos } from '../hooks'
 import type { Produto, ProdutoFiltros } from '../types'
+import { AcoesProduto } from './AcoesProduto'
 import { ProdutoFormModal } from './ProdutoFormModal'
 import { ProdutosFiltros } from './ProdutosFiltros'
 import styles from './ProdutosPage.module.css'
@@ -10,7 +11,7 @@ import { ProdutosTabela } from './ProdutosTabela'
 
 /**
  * Tela de Produtos: filtros + listagem paginada com estados de
- * carregamento/vazio/erro + criar/editar. As ações por registro entram na 05-T5.
+ * carregamento/vazio/erro + criar/editar + ações de ciclo de vida.
  */
 export function ProdutosPage() {
   const [filtros, setFiltros] = useState<ProdutoFiltros>({ page: 1 })
@@ -25,6 +26,10 @@ export function ProdutosPage() {
 
   const abrirNovo = () => {
     setProdutoEdicao(null)
+    setFormAberto(true)
+  }
+  const abrirEdicao = (produto: Produto) => {
+    setProdutoEdicao(produto)
     setFormAberto(true)
   }
 
@@ -58,7 +63,12 @@ export function ProdutosPage() {
         <div className={styles.estado}>Nenhum produto encontrado.</div>
       ) : (
         <>
-          <ProdutosTabela produtos={data.data} />
+          <ProdutosTabela
+            produtos={data.data}
+            acoesSlot={(produto) => (
+              <AcoesProduto produto={produto} onEditar={abrirEdicao} />
+            )}
+          />
           <Pagination meta={data.meta} onPageChange={irParaPagina} />
         </>
       )}
