@@ -1,8 +1,9 @@
 .acoes {
   display: inline-flex;
   gap: var(--esp-1);
-  justify-content: flex-end;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .impacto {

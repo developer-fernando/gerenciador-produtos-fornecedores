@@ -1,19 +1,36 @@
-.field {
+.filtros {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--esp-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--esp-5);
+  padding: var(--esp-4);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-2);
+}
+
+.campo {
   display: flex;
   flex-direction: column;
   gap: var(--esp-1);
-  margin-bottom: var(--esp-4);
 }
 
-.label {
-  font-size: 14px;
+.campoBusca {
+  flex: 1 1 220px;
+  min-width: 12rem;
+  max-width: 28rem;
+}
+
+.campoCurto {
+  flex: 0 0 10.5rem;
+  width: 10.5rem;
+}
+
+.rotulo {
+  font-size: 13px;
   font-weight: 600;
-  color: var(--cor-texto);
-}
-
-.obrigatorio::after {
-  content: ' *';
-  color: var(--cor-perigo);
+  color: var(--cor-texto-suave);
 }
 
 .controle {
@@ -24,6 +41,8 @@
   border-radius: var(--raio-1);
   background: var(--cor-superficie);
   color: var(--cor-texto);
+  min-width: 0;
+  width: 100%;
 }
 
 .controle:focus-visible {
@@ -31,6 +50,7 @@
   outline-offset: 1px;
 }
 
+/* Seta nativa cola na borda (Windows); seta própria com o mesmo recuo da esquerda. */
 select.controle {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235b5b5b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
@@ -40,11 +60,16 @@ select.controle {
   padding-right: var(--esp-5);
 }
 
-.invalido {
-  border-color: var(--cor-perigo);
+.check {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  font-size: 14px;
+  min-height: 2.5rem;
+  cursor: pointer;
 }
 
-.erro {
-  font-size: 13px;
-  color: var(--cor-perigo);
+.check input:focus-visible {
+  outline: 2px solid var(--foco-cor);
+  outline-offset: 1px;
 }

@@ -11,6 +11,7 @@
   /* Papéis semânticos */
   --cor-fundo: var(--horizon-cinza-claro);
   --cor-superficie: var(--horizon-branco);
+  --cor-superficie-hover: #fafafa;
   --cor-texto: var(--horizon-grafite);
   --cor-texto-suave: #5b5b5b;
   --cor-borda: #e4e4e4;
@@ -55,10 +56,11 @@
   --esp-6: 32px;
   --esp-7: 48px;
 
-  /* Raio e sombra */
-  --raio-1: 4px;
-  --raio-2: 8px;
-  --raio-3: 12px;
+  /* Raio e sombra — um degrau acima da escala inicial (controles 8,
+     cards 12, modal 16) para cantos mais contemporâneos. */
+  --raio-1: 8px;
+  --raio-2: 12px;
+  --raio-3: 16px;
   --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
   --sombra-2: 0 4px 12px rgba(0, 0, 0, 0.12);
 

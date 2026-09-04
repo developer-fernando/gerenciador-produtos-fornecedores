@@ -24,10 +24,10 @@ export function EmpresasTabela({
       <thead>
         <tr>
           <th>Nome</th>
-          <th>CNPJ</th>
+          <th className={styles.mono}>CNPJ</th>
           <th>E-mail</th>
-          <th>Telefone</th>
-          <th>Status</th>
+          <th className={styles.mono}>Telefone</th>
+          <th className={styles.status}>Status</th>
           <th className={styles.produtos}>Produtos</th>
           {temAcoes && <th className={styles.acoes}>Ações</th>}
         </tr>
@@ -37,11 +37,9 @@ export function EmpresasTabela({
           <tr key={empresa.id}>
             <td className={styles.nome}>{empresa.nome}</td>
             <td className={styles.mono}>{formatarCnpj(empresa.cnpj)}</td>
-            <td>{empresa.email}</td>
+            <td className={styles.email}>{empresa.email}</td>
             <td className={styles.mono}>{formatarTelefone(empresa.telefone)}</td>
-            <td>
-              <StatusBadge status={empresa.status} excluido={empresa.excluido} />
-            </td>
+            <td className={styles.status}><StatusBadge status={empresa.status} excluido={empresa.excluido} /></td>
             <td className={styles.produtos}>{empresa.produtos_count}</td>
             {temAcoes && <td className={styles.acoes}>{acoesSlot?.(empresa)}</td>}
           </tr>

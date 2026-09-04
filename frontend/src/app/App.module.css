@@ -8,8 +8,10 @@
   flex: 1;
   width: 100%;
   max-width: var(--largura-conteudo);
+  min-width: 0;
   margin: 0 auto;
   padding: var(--esp-6) var(--esp-5);
+  overflow-x: clip;
 }
 
 @media (max-width: 720px) {

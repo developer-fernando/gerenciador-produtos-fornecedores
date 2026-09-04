@@ -1,6 +1,7 @@
 .acoes {
   display: inline-flex;
-  gap: var(--esp-1);
-  justify-content: flex-end;
-  flex-wrap: wrap;
+  gap: var(--esp-2);
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
 }

@@ -1,5 +1,7 @@
 .wrap {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
   background: var(--cor-superficie);
   border: 1px solid var(--cor-borda);
@@ -10,6 +12,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
+  table-layout: auto;
 }
 
 .wrap th,
@@ -17,8 +20,7 @@
   text-align: left;
   padding: var(--esp-3) var(--esp-4);
   border-bottom: 1px solid var(--cor-borda);
-  vertical-align: middle;
-  white-space: nowrap;
+  vertical-align: top;
 }
 
 .wrap th {
@@ -32,5 +34,5 @@
 }
 
 .wrap tbody tr:hover {
-  background: #fafafa;
+  background: var(--cor-superficie-hover);
 }

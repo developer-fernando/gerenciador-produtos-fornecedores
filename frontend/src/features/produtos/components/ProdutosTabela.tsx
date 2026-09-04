@@ -27,7 +27,7 @@ export function ProdutosTabela({
           <th>Empresa</th>
           <th className={styles.preco}>Preço</th>
           <th className={styles.codigo}>Código</th>
-          <th>Status</th>
+          <th className={styles.status}>Status</th>
           {temAcoes && <th className={styles.acoes}>Ações</th>}
         </tr>
       </thead>
@@ -35,12 +35,10 @@ export function ProdutosTabela({
         {produtos.map((produto) => (
           <tr key={produto.id}>
             <td className={styles.nome}>{produto.nome}</td>
-            <td>{produto.empresa.nome}</td>
+            <td className={styles.empresa}>{produto.empresa.nome}</td>
             <td className={styles.preco}>{formatarPreco(produto.preco)}</td>
             <td className={styles.codigo}>{produto.codigo_interno}</td>
-            <td>
-              <StatusBadge status={produto.status} excluido={produto.excluido} />
-            </td>
+            <td className={styles.status}><StatusBadge status={produto.status} excluido={produto.excluido} /></td>
             {temAcoes && <td className={styles.acoes}>{acoesSlot?.(produto)}</td>}
           </tr>
         ))}

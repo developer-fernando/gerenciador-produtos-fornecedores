@@ -1,18 +1,35 @@
 .nome {
   font-weight: 600;
   color: var(--horizon-preto);
+  white-space: nowrap;
 }
 
 .mono {
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  width: 1%;
+}
+
+.email {
+  overflow-wrap: break-word;
+  max-width: 9rem;
+}
+
+.status {
+  white-space: nowrap;
+  width: 1%;
+}
+
+th.produtos,
+td.produtos {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  width: 1%;
+  padding-left: var(--esp-2);
+  padding-right: var(--esp-2);
 }
 
 .acoes {
-  text-align: right;
   white-space: nowrap;
-}
-
-.produtos {
-  text-align: center;
-  font-variant-numeric: tabular-nums;
+  width: 1%;
 }

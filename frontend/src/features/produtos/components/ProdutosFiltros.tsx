@@ -1,6 +1,6 @@
 import type { Status } from '../../../shared/types'
 import type { ProdutoFiltros } from '../types'
-import styles from './ProdutosFiltros.module.css'
+import styles from '../../../shared/components/FiltrosBar.module.css'
 
 /**
  * Filtros da listagem de produtos: nome (parcial), status e toggle de excluídos.
@@ -15,7 +15,7 @@ export function ProdutosFiltros({
 }) {
   return (
     <div className={styles.filtros}>
-      <div className={styles.campo}>
+      <div className={`${styles.campo} ${styles.campoBusca}`}>
         <label className={styles.rotulo} htmlFor="filtro-produto-nome">
           Nome
         </label>
@@ -29,7 +29,7 @@ export function ProdutosFiltros({
         />
       </div>
 
-      <div className={styles.campo}>
+      <div className={`${styles.campo} ${styles.campoCurto}`}>
         <label className={styles.rotulo} htmlFor="filtro-produto-status">
           Status
         </label>

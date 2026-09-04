@@ -3,6 +3,14 @@ import { Button } from '../../../shared/components/Button'
 import { ConfirmDialog } from '../../../shared/components/ConfirmDialog'
 import { ehApiError } from '../../../lib/errors'
 import { useToast } from '../../../shared/components/toastContext'
+import {
+  IconeEditar,
+  IconeExcluir,
+  IconeExcluirDefinitivo,
+  IconeInativar,
+  IconeReativar,
+  IconeRestaurar,
+} from '../../../shared/icons'
 import { useEmpresaMutations } from '../hooks'
 import type { Empresa } from '../types'
 import styles from './AcoesEmpresa.module.css'
@@ -48,11 +56,13 @@ export function AcoesEmpresa({
     <div className={styles.acoes}>
       {acoes.editar && (
         <Button variante="fantasma" pequeno onClick={() => onEditar(empresa)}>
+          <IconeEditar />
           Editar
         </Button>
       )}
       {acoes.inativar && (
         <Button variante="fantasma" pequeno onClick={() => setDialogo('inativar')}>
+          <IconeInativar />
           Inativar
         </Button>
       )}
@@ -62,11 +72,13 @@ export function AcoesEmpresa({
           pequeno
           onClick={() => reativar.mutate(empresa.id, feedback('Empresa reativada.'))}
         >
+          <IconeReativar />
           Reativar
         </Button>
       )}
       {acoes.excluir && (
         <Button variante="perigoFantasma" pequeno onClick={() => setDialogo('excluir')}>
+          <IconeExcluir />
           Excluir
         </Button>
       )}
@@ -76,11 +88,13 @@ export function AcoesEmpresa({
           pequeno
           onClick={() => restaurar.mutate(empresa.id, feedback('Empresa restaurada.'))}
         >
+          <IconeRestaurar />
           Restaurar
         </Button>
       )}
       {acoes.excluir_definitivamente && (
         <Button variante="perigoFantasma" pequeno onClick={() => setDialogo('forcar')}>
+          <IconeExcluirDefinitivo />
           Excluir definitivamente
         </Button>
       )}

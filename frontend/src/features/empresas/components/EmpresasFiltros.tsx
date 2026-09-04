@@ -1,6 +1,6 @@
 import type { Status } from '../../../shared/types'
 import type { EmpresaFiltros } from '../types'
-import styles from './EmpresasFiltros.module.css'
+import styles from '../../../shared/components/FiltrosBar.module.css'
 
 /**
  * Filtros da listagem: nome (parcial), status (Ativo/Inativo) e um toggle para
@@ -16,7 +16,7 @@ export function EmpresasFiltros({
 }) {
   return (
     <div className={styles.filtros}>
-      <div className={styles.campo}>
+      <div className={`${styles.campo} ${styles.campoBusca}`}>
         <label className={styles.rotulo} htmlFor="filtro-nome">
           Nome
         </label>
@@ -30,7 +30,7 @@ export function EmpresasFiltros({
         />
       </div>
 
-      <div className={styles.campo}>
+      <div className={`${styles.campo} ${styles.campoCurto}`}>
         <label className={styles.rotulo} htmlFor="filtro-status">
           Status
         </label>

@@ -1,19 +1,36 @@
 .nome {
   font-weight: 600;
   color: var(--horizon-preto);
+  overflow-wrap: break-word;
+}
+
+.empresa {
+  white-space: nowrap;
+  width: 1%;
 }
 
 .preco {
-  text-align: right;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+  width: 1%;
 }
 
 .codigo {
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  width: 1%;
+}
+
+.status {
+  white-space: nowrap;
+  width: 1%;
 }
 
 .acoes {
-  text-align: right;
   white-space: nowrap;
+  width: 1%;
+}
+
+th.acoes {
+  text-align: center;
 }
