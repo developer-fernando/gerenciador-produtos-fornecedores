@@ -155,6 +155,10 @@ Ver [docs/07-criterios-de-avaliacao.md](docs/07-criterios-de-avaliacao.md). Peso
 
 Campos e validações: [docs/03-modelagem.md](docs/03-modelagem.md).
 
+## 8.1. Execução via PRD + Specs
+
+A implementação é organizada em funcionalidades pequenas e rastreáveis em [`specs/`](specs/README.md): cada funcionalidade tem um **PRD** (o quê/por quê) e uma **Spec** (o como + **tickets**). As specs referenciam `docs/` e este guia — não recopiam. Commits referenciam o ticket (ex.: `[01-T3]`). Antes de implementar uma funcionalidade, consultar/atualizar sua Spec.
+
 ## 9. Diretrizes para utilização de IA
 
 Antes de alterar qualquer coisa, a IA deve:
