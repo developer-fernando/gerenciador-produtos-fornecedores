@@ -67,7 +67,7 @@ Feature tests (Pest + `RefreshDatabase`, MySQL de testes) — [docs/14](../../do
 - [x] **02-T2** — Form Requests `StoreProdutoRequest`/`UpdateProdutoRequest` (validações; `EmpresaApta`; código único por empresa incl. excluídos escopado ao `empresa_id` enviado, ignore no update; mensagens pt) — verificado via tinker.
 - [x] **02-T3** — Estender `RegraDeNegocioException` com `empresaInativaOuExcluida()` (422) e `empresaExcluida()` (409) — verificado via tinker.
 - [x] **02-T4** — `ProdutoResource` (payload + `empresa` resumo + `excluido` + `acoes_permitidas` derivadas do produto e da aptidão da empresa) — verificado via tinker.
-- [ ] **02-T5** — `ProdutoService`: create/update/show/list (eager load `empresa`; paginação + filtros nome/status/excluídos); editar produto já excluído → 409 `registro_excluido`.
+- [x] **02-T5** — `ProdutoService`: create/update/show/list (eager load `empresa`; paginação 10 + filtros; editar produto excluído → 409) — verificado via tinker.
 - [ ] **02-T6** — `ProdutoService`: inativar / reativar (reativar exige empresa apta) — revalidação 409 em produto excluído.
 - [ ] **02-T7** — `ProdutoService`: exclusão lógica individual / restauração (exige empresa não excluída; status ajustado à aptidão da empresa).
 - [ ] **02-T8** — `ProdutoService`: exclusão física (só de produto já excluído) + `ProdutoController` + rotas.
