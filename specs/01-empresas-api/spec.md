@@ -75,7 +75,7 @@ Feature tests (Pest + `RefreshDatabase`, MySQL de testes) — [docs/14](../../do
 - [x] **01-T6** — `EmpresaService`: exclusão lógica (cascata + `excluido_em_cascata`) / restauração seletiva — transacional; verificado via tinker (restaura só os da cascata; individual permanece excluído).
 - [x] **01-T7** — `EmpresaService`: exclusão física — permitida **apenas** quando a empresa está **excluída logicamente** (senão 409 `registro_nao_excluido`) **e** sem produto vinculado, incl. excluído (senão 409 `empresa_com_produtos_vinculados`) — verificado via tinker (3 cenários).
 - [x] **01-T8** — Padronização de erros de regra de negócio: `RegraDeNegocioException` com método `render()` retornando `{message, code}` + status (aproveita o `shouldRenderJsonWhen` já existente no `bootstrap/app.php`); factories `registroNaoExcluido`/`empresaComProdutosVinculados`/`registroExcluido` (verificado via tinker: 409 + JSON).
-- [ ] **01-T9** — `EmpresaController` (fino) + `routes/api.php` + **registro do grupo `api` no `bootstrap/app.php`** (`withRouting(api: ...)`); smoke test de que os endpoints respondem (não 404).
+- [x] **01-T9** — `EmpresaController` (fino) + `routes/api.php` + **registro do grupo `api` no `bootstrap/app.php`** (`withRouting(api: ...)`); smoke test OK (9 rotas; GET 200, POST 201 com payload padronizado).
 - [ ] **01-T10** — Testes de feature cobrindo todas as regras acima (inclui estado Inativa+Excluída e revalidação 409 em empresa já excluída).
 
 ## 8. Definition of Done
