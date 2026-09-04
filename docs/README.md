@@ -1,6 +1,6 @@
 # Documentação do Projeto — Sistema de Gerenciamento de Produtos e Fornecedores
 
-Base documental do desafio técnico Horizon (Desenvolvedor Full Stack Pleno). Cada arquivo tem uma responsabilidade única e é a **fonte principal** do seu assunto; os demais apenas referenciam.
+Base documental do sistema de gerenciamento de produtos e fornecedores. Cada arquivo tem uma responsabilidade única e é a **fonte principal** do seu assunto; os demais apenas referenciam.
 
 ## Mapa da documentação
 
@@ -10,7 +10,7 @@ Base documental do desafio técnico Horizon (Desenvolvedor Full Stack Pleno). Ca
 | [02-regras-de-negocio.md](02-regras-de-negocio.md) | **Regras de uso**, status × exclusão lógica, regras de exclusão, cascatas, mecânicas obrigatórias e unicidade. Fonte principal das regras. |
 | [03-modelagem.md](03-modelagem.md) | Entidades, campos, tipos, validações de campo, relacionamentos, índices e rastreio da exclusão. |
 | [04-requisitos.md](04-requisitos.md) | Requisitos funcionais (funcionalidades, listagens, filtros) e não funcionais. |
-| [05-ux-e-interface.md](05-ux-e-interface.md) | Fluxos de uso, requisitos de interface, estados e identidade visual Horizon. |
+| [05-ux-e-interface.md](05-ux-e-interface.md) | Fluxos de uso, requisitos de interface, estados e identidade visual. |
 | [06-requisitos-tecnicos.md](06-requisitos-tecnicos.md) | Stack, arquitetura, o que fazer no back-end e no front-end, convenções e decisões técnicas. |
 | [07-criterios-de-avaliacao.md](07-criterios-de-avaliacao.md) | Critérios, pesos, itens eliminatórios e mapa de prioridades. |
 | [08-arquitetura-geral.md](08-arquitetura-geral.md) | Visão de arquitetura da aplicação como um todo; comunicação front↔back; stack; como as recomendações do Sênior foram tratadas. |
