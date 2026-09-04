@@ -2,23 +2,31 @@ import { useState } from 'react'
 import { Button } from '../../../shared/components/Button'
 import { Pagination } from '../../../shared/components/Pagination'
 import { useProdutos } from '../hooks'
-import type { ProdutoFiltros } from '../types'
+import type { Produto, ProdutoFiltros } from '../types'
+import { ProdutoFormModal } from './ProdutoFormModal'
 import { ProdutosFiltros } from './ProdutosFiltros'
 import styles from './ProdutosPage.module.css'
 import { ProdutosTabela } from './ProdutosTabela'
 
 /**
  * Tela de Produtos: filtros + listagem paginada com estados de
- * carregamento/vazio/erro. O formulário (criar/editar) entra na 05-T4 e as
- * ações por registro na 05-T5.
+ * carregamento/vazio/erro + criar/editar. As ações por registro entram na 05-T5.
  */
 export function ProdutosPage() {
   const [filtros, setFiltros] = useState<ProdutoFiltros>({ page: 1 })
   const { data, isLoading, isError, refetch } = useProdutos(filtros)
 
+  const [formAberto, setFormAberto] = useState(false)
+  const [produtoEdicao, setProdutoEdicao] = useState<Produto | null>(null)
+
   const atualizarFiltro = (parcial: Partial<ProdutoFiltros>) =>
     setFiltros((f) => ({ ...f, ...parcial, page: 1 }))
   const irParaPagina = (page: number) => setFiltros((f) => ({ ...f, page }))
+
+  const abrirNovo = () => {
+    setProdutoEdicao(null)
+    setFormAberto(true)
+  }
 
   const vazio = !data || data.data.length === 0
 
@@ -26,6 +34,9 @@ export function ProdutosPage() {
     <section>
       <header className={styles.cabecalho}>
         <h1 className={styles.titulo}>Produtos</h1>
+        <Button variante="primario" onClick={abrirNovo}>
+          Novo produto
+        </Button>
       </header>
 
       <ProdutosFiltros filtros={filtros} onChange={atualizarFiltro} />
@@ -50,6 +61,14 @@ export function ProdutosPage() {
           <ProdutosTabela produtos={data.data} />
           <Pagination meta={data.meta} onPageChange={irParaPagina} />
         </>
+      )}
+
+      {formAberto && (
+        <ProdutoFormModal
+          key={produtoEdicao?.id ?? 'novo'}
+          produto={produtoEdicao}
+          onClose={() => setFormAberto(false)}
+        />
       )}
     </section>
   )

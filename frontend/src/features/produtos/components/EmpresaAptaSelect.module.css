@@ -1,0 +1,11 @@
+.aviso {
+  font-size: 13px;
+  color: var(--feedback-erro);
+  margin-top: var(--esp-1);
+}
+
+.info {
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+  margin-top: var(--esp-1);
+}

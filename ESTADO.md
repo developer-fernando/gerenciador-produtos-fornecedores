@@ -12,16 +12,16 @@
 | **Feature em andamento** | 05 — Front: Produtos (Spec aprovada; implementando) |
 | **Próxima feature** | — (05 é a última do recorte) |
 | **Backend** | ✅ Completo e no ar (features 00–03; 45 testes) |
-| **Último commit relevante** | `e2ee10d`+ — base da 05 aprovada |
+| **Último commit relevante** | `f7ded81`+ — 05-T1..T3; 05-T4 neste commit |
 | **Atualizado em** | 2026-09-04 |
 
 ## Onde paramos
 
-Backend (00–03) e front de Empresas (04) concluídos, testados (45 + 39 testes) e **rodando integrados** via Docker (verificados com dados reais). Camada de continuidade entre LLMs concluída. A **Feature 05 (Front: Produtos)** teve PRD + Spec **aprovados** na validação autônoma (2 rodadas; F1 = seletor de empresa apta que truncava em 10 empresas, corrigido). Implementação prestes a começar.
+Backend (00–03) e front de Empresas (04) concluídos, testados (45 + 39 testes) e **rodando integrados** via Docker (verificados com dados reais). Camada de continuidade entre LLMs concluída. A **Feature 05 (Front: Produtos)** teve PRD + Spec **aprovados** na validação autônoma (2 rodadas; F1 = seletor de empresa apta que truncava em 10 empresas, corrigido). Implementação em andamento: **05-T1..T4** feitos; T4 verificado no navegador (seletor mostra as 5 empresas aptas, exclui a inativa “Carvalho Comercial”).
 
 ## Próximo passo
 
-Implementar a **Feature 05** pelos tickets de [`specs/05-front-produtos/spec.md §7`](specs/05-front-produtos/spec.md). Feito: **05-T1** (navegação), **05-T2** (dados de produtos + `AcoesPermitidas` em `shared/`), **05-T3** (listagem: página/filtros/tabela/estados; 45 testes; verificado no navegador). **Próximo: 05-T4** (formulário criar/editar: `ProdutoFormModal` + `EmpresaAptaSelect` — todas as aptas via iteração de páginas, `empresaVinculada` na edição, vazio bloqueia submit; validação por campo + 422; botão "Novo produto" na página) → 05-T5 (ações de ciclo de vida + invalidação) → 05-T6 (validação final). Commit por ticket `[05-TX]`; atualizar este `ESTADO.md` + checkbox a cada um. Após a 05: fechamento (README de execução, foco de teclado, logo real).
+Implementar a **Feature 05** pelos tickets de [`specs/05-front-produtos/spec.md §7`](specs/05-front-produtos/spec.md). Feito: **05-T1** (navegação), **05-T2** (dados de produtos + `AcoesPermitidas` em `shared/`), **05-T3** (listagem; 45 testes), **05-T4** (formulário criar/editar: `ProdutoFormModal` + `EmpresaAptaSelect`; 51 testes; seletor com dados reais). **Próximo: 05-T5** (ações de ciclo de vida: `AcoesProduto` condicional + inativar/reativar/excluir/restaurar/forcar, confirmações/avisos, 409 `empresa_excluida` e 422 `empresa_inativa_ou_excluida` no reativar; invalidação da listagem) → 05-T6 (validação final). Commit por ticket `[05-TX]`; atualizar este `ESTADO.md` + checkbox a cada um. Após a 05: fechamento (README de execução, foco de teclado, logo real).
 
 ## Progresso
 
