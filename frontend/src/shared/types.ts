@@ -3,6 +3,19 @@
 /** Status de um registro (dimensão independente da exclusão lógica). */
 export type Status = 'Ativo' | 'Inativo'
 
+/**
+ * Ações permitidas calculadas no servidor (base para a UI condicional — docs/15).
+ * Comum a Empresa e Produto, por isso vive em `shared/`.
+ */
+export interface AcoesPermitidas {
+  editar: boolean
+  inativar: boolean
+  reativar: boolean
+  excluir: boolean
+  restaurar: boolean
+  excluir_definitivamente: boolean
+}
+
 /** Metadados de paginação do envelope do Laravel (docs/15). */
 export interface PageMeta {
   current_page: number

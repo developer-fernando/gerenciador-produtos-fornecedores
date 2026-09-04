@@ -1,14 +1,8 @@
-import type { Status } from '../../shared/types'
+import type { AcoesPermitidas, Status } from '../../shared/types'
 
-/** Ações permitidas calculadas no servidor (base para a UI condicional — docs/15). */
-export interface AcoesPermitidas {
-  editar: boolean
-  inativar: boolean
-  reativar: boolean
-  excluir: boolean
-  restaurar: boolean
-  excluir_definitivamente: boolean
-}
+// `AcoesPermitidas` agora vive em `shared/` (usado por Empresa e Produto);
+// re-exportado aqui para compatibilidade com quem já importa de `../types`.
+export type { AcoesPermitidas }
 
 /** Empresa, espelhando o recurso da API (docs/15). cnpj/telefone só com dígitos. */
 export interface Empresa {

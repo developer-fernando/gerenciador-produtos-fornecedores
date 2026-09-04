@@ -21,7 +21,7 @@ Backend (00–03) e front de Empresas (04) concluídos, testados (45 + 39 testes
 
 ## Próximo passo
 
-Implementar a **Feature 05** pelos tickets de [`specs/05-front-produtos/spec.md §7`](specs/05-front-produtos/spec.md). Feito: **05-T1** (navegação Empresas/Produtos + rota `/produtos`). **Próximo: 05-T2** (mover `AcoesPermitidas` p/ `shared/types.ts` + criar `features/produtos` — `types.ts`, `api.ts` com `listarEmpresasAptas` iterando páginas, `hooks.ts`) → 05-T3 (listagem) → 05-T4 (form + `EmpresaAptaSelect`) → 05-T5 (ações) → 05-T6 (validação final). Commit por ticket `[05-TX]`; atualizar este `ESTADO.md` + checkbox a cada um. Após a 05: fechamento (README de execução, foco de teclado, logo real).
+Implementar a **Feature 05** pelos tickets de [`specs/05-front-produtos/spec.md §7`](specs/05-front-produtos/spec.md). Feito: **05-T1** (navegação) e **05-T2** (`AcoesPermitidas` em `shared/`; `features/produtos` types/api/hooks, incl. `listarEmpresasAptas` iterando páginas). **Próximo: 05-T3** (listagem: `ProdutosPage`+`ProdutosFiltros`+`ProdutosTabela` com empresa/preço/badge/código; paginação, filtros, estados; testes via MSW) → 05-T4 (form + `EmpresaAptaSelect`) → 05-T5 (ações) → 05-T6 (validação final). Commit por ticket `[05-TX]`; atualizar este `ESTADO.md` + checkbox a cada um. Após a 05: fechamento (README de execução, foco de teclado, logo real).
 
 ## Progresso
 
