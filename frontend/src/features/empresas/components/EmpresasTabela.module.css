@@ -1,0 +1,18 @@
+.nome {
+  font-weight: 600;
+  color: var(--horizon-preto);
+}
+
+.mono {
+  font-variant-numeric: tabular-nums;
+}
+
+.acoes {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.produtos {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
