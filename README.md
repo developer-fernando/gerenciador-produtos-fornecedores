@@ -4,6 +4,8 @@ Sistema web para **cadastro e manutenção de Empresas (Fornecedores) e seus Pro
 
 A aplicação é dividida em uma **API REST em Laravel** (back-end) e uma **SPA em React** (front-end), executadas de forma integrada via Docker.
 
+> **Contribuindo com assistência de IA?** O estado atual do desenvolvimento e o próximo passo estão em [`ESTADO.md`](ESTADO.md); o protocolo para assumir o projeto está em [`AGENTS.md` §0](AGENTS.md#0-continuidade--comece-aqui).
+
 ---
 
 ## Índice

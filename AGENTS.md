@@ -8,6 +8,35 @@ A documentação completa vive em [`docs/`](docs/README.md) e é a **fonte de ve
 
 ---
 
+## 0. Continuidade — comece aqui
+
+> Esta seção existe para que **qualquer LLM ou ferramenta** (não só a que iniciou o projeto) consiga assumir o desenvolvimento **sem perder contexto, organização ou padrão**. A fonte da verdade é o **repositório** (markdown + git), nunca uma conversa específica.
+
+**Se você está assumindo o projeto agora, leia nesta ordem:**
+
+1. [`ESTADO.md`](ESTADO.md) — estado vivo: fase atual, feature em andamento, **próximo passo**, progresso.
+2. **Este `AGENTS.md`** — constituição: contexto, stack, arquitetura, regras e este protocolo.
+3. [`docs/README.md`](docs/README.md) — índice da **fonte de verdade** (regras, modelagem, contrato de API). Ler sob demanda.
+4. [`specs/README.md`](specs/README.md) — a **mecânica de execução** (PRD + Spec + validação autônoma + tickets).
+5. A **spec da feature atual/próxima** (indicada no `ESTADO.md`), em `specs/NN-.../spec.md`.
+
+**Como retomar o trabalho:**
+- Siga o **"Próximo passo"** do [`ESTADO.md`](ESTADO.md) e continue pelo **próximo ticket não marcado** da spec correspondente.
+- Respeite o fluxo: **PRD → Spec → validação autônoma → implementação → validação executável** ([specs/README.md](specs/README.md#fluxo-de-trabalho)).
+- **Commit por ticket**, referenciando o ID no final (ex.: `feat(...): ... [05-T2]`).
+- Rode o **portão de validação** antes de concluir (ver §8.1 e specs/README).
+
+**Regra de atualização de estado (obrigatória):** ao concluir **cada ticket**, no **mesmo commit**, atualize:
+- [`ESTADO.md`](ESTADO.md) (snapshot + próximo passo + progresso),
+- o **checkbox** do ticket na `spec.md`,
+- o `validation.md` quando aplicável.
+
+Assim o estado **nunca vive apenas numa conversa** — a próxima LLM o encontra no repositório.
+
+**Fonte única da verdade (hierarquia, em caso de divergência):** `docs/` > `AGENTS.md` > `specs/` > `ESTADO.md` > histórico git (event-log dos commits `[NN-TX]`).
+
+---
+
 ## 1. Contexto e objetivo
 
 - **Projeto:** Sistema de Gerenciamento de **Produtos e Fornecedores** (Empresas). Teste técnico Horizon — Full Stack Pleno.
