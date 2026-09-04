@@ -2,24 +2,35 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Empresa;
+use App\Models\Produto;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
-     * Seed the application's database.
+     * Popula o banco de desenvolvimento com empresas e produtos de exemplo,
+     * cobrindo os estados relevantes (ativo, inativo e excluído em cascata).
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Empresas ativas, cada uma com alguns produtos ativos.
+        Empresa::factory(5)
+            ->has(Produto::factory()->count(4))
+            ->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Uma empresa inativa com produtos.
+        Empresa::factory()
+            ->inativa()
+            ->has(Produto::factory()->count(3))
+            ->create();
+
+        // Uma empresa excluída logicamente, com produtos excluídos pela cascata (regra 6).
+        $excluida = Empresa::factory()->excluida()->create();
+        Produto::factory()
+            ->count(3)
+            ->excluidoEmCascata()
+            ->for($excluida)
+            ->create();
     }
 }

@@ -65,7 +65,7 @@ Referência: [docs/14-estrategia-de-testes.md](../../docs/14-estrategia-de-teste
 - [x] **00-T4** — Model `Empresa` — _`SoftDeletes`, `$fillable`, `$casts`, `hasMany(Produto)` (relacionamento verificado via tinker)._
 - [x] **00-T5** — Model `Produto` — _`SoftDeletes`, `$fillable`, `$casts` (`preco` decimal:2, `excluido_em_cascata` bool), `belongsTo(Empresa)` (verificado via tinker)._
 - [x] **00-T6** — Factories `EmpresaFactory` e `ProdutoFactory` — _geram dados válidos (CNPJ com dígitos verificadores corretos, verificado); states: inativo/inativa, excluído, excluído-em-cascata._
-- [ ] **00-T7** — Seeders — _`DatabaseSeeder` popula empresas e produtos de exemplo via factories; `migrate:fresh --seed` roda sem erro._
+- [x] **00-T7** — Seeders — _`DatabaseSeeder` popula empresas e produtos de exemplo via factories (ativos, inativos e excluídos em cascata); `migrate:fresh --seed` roda sem erro (7 empresas / 26 produtos verificados)._
 - [ ] **00-T8** — Teste de fundação (Pest) — _relacionamento 1—N e soft delete básicos passando no banco de testes MySQL._
 
 ## 8. Definition of Done
