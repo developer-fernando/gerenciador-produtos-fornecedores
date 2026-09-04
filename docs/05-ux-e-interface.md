@@ -44,4 +44,4 @@ Regras de aplicação (🟩):
 - **Texto sobre amarelo é sempre preto.**
 - **Não** usar texto amarelo sobre branco.
 
-🟦 **Logotipo:** já existe uma logo disponível que será utilizada no cabeçalho, respeitando as regras acima.
+🟦 **Logotipo:** o logotipo Horizon será utilizado no cabeçalho, respeitando as regras acima. **Pendência:** o arquivo ainda não está no repositório; até ser fornecido, o cabeçalho usa um fallback textual ("Horizon", preto sobre amarelo), substituível por um único ponto quando o asset chegar.
