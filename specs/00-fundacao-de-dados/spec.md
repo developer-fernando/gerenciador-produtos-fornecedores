@@ -31,7 +31,7 @@ Não se aplica nesta entrega (sem endpoints). Endpoints entram em 01/02 — [doc
 - **Models:** `app/Models/Empresa.php`, `app/Models/Produto.php` (SoftDeletes, `$fillable`, `$casts`, relacionamentos `hasMany`/`belongsTo`).
 - **Factories:** `database/factories/EmpresaFactory.php`, `ProdutoFactory.php`.
 - **Seeders:** `database/seeders/DatabaseSeeder.php` — popular empresas e produtos de exemplo via factories (`migrate:fresh --seed`).
-- **Infra de testes:** instalar **Pest** (`pestphp/pest` + plugin Laravel) no `composer.json` (require-dev); criar `backend/.env.testing` apontando para `DB_CONNECTION=mysql` / `DB_DATABASE=horizon_testing`; ajustar `backend/phpunit.xml` (que hoje usa sqlite `:memory:`) para o banco de testes MySQL.
+- **Infra de testes:** instalar **Pest** (`pestphp/pest` + plugin Laravel) no `composer.json` (require-dev); apontar o ambiente de testes para o **MySQL de testes** ajustando `backend/phpunit.xml` (que hoje usa sqlite `:memory:`) para `DB_CONNECTION=mysql` / `DB_DATABASE=horizon_testing` com `force="true"`. Host/usuário/senha vêm do ambiente do container (não se commita segredo).
 
 **Front-end:** nenhuma mudança.
 
@@ -59,7 +59,7 @@ Referência: [docs/14-estrategia-de-testes.md](../../docs/14-estrategia-de-teste
 
 ## 7. Tickets
 
-- [ ] **00-T1** — Infra de testes (Pest + banco MySQL) — _instala Pest (require-dev), cria `.env.testing` (MySQL `horizon_testing`), ajusta `phpunit.xml`; `php artisan test` roda a suíte de exemplo contra o MySQL de testes._
+- [x] **00-T1** — Infra de testes (Pest + banco MySQL) — _Pest 4 instalado (require-dev) e inicializado (`tests/Pest.php`); `phpunit.xml` forçado para `DB_CONNECTION=mysql` / `DB_DATABASE=horizon_testing` (`force="true"`, para nunca usar o banco de desenvolvimento); `php artisan test` verde._
 - [ ] **00-T2** — Migration `empresas` — _tabela criada com campos, índices únicos (`cnpj`, `email`), `status`, `softDeletes` e timestamps; `migrate` roda._
 - [ ] **00-T3** — Migration `produtos` — _tabela criada com FK `empresa_id` (constrained), `preco` decimal(12,2), `codigo_interno`, `excluido_em_cascata`, único composto `(empresa_id, codigo_interno)`, `status`, `softDeletes`, índices; `migrate` roda._
 - [ ] **00-T4** — Model `Empresa` — _`SoftDeletes`, `$fillable`, `$casts`, `hasMany(Produto)`._
@@ -82,5 +82,5 @@ Referência: [docs/14-estrategia-de-testes.md](../../docs/14-estrategia-de-teste
 - Unicidade "incluindo excluídos" usa **índice único simples** (não parcial), coerente com a regra do projeto. Risco: um registro soft-deleted mantém o valor "ocupado" até a exclusão física — comportamento **desejado** (ver [docs/02 §6](../../docs/02-regras-de-negocio.md#6-unicidade)).
 - `status` como `string(10)` em vez de ENUM para portabilidade MySQL/SQLite; a restrição a `Ativo`/`Inativo` é garantida na camada de aplicação (01/02).
 - `excluido_em_cascata` é preenchido pela lógica de cascata da funcionalidade 02; nesta entrega apenas a coluna e o default `false` são criados.
-- **Infra de testes:** o scaffold do Laravel veio com **PHPUnit** e `phpunit.xml` apontando para **sqlite `:memory:`**. Como o projeto define testes em **Pest** sobre **MySQL** ([docs/14](../../docs/14-estrategia-de-testes.md), [docs/13](../../docs/13-persistencia-e-banco.md#banco-de-testes)), o ticket 00-T1 instala o Pest e reaponta o ambiente de testes para o banco `horizon_testing` (já provisionado pelo `docker/mysql/init.sql`). Sem esse ticket, 00-T8 não é executável.
+- **Infra de testes:** o scaffold do Laravel veio com **PHPUnit** e `phpunit.xml` apontando para **sqlite `:memory:`**. Como o projeto define testes em **Pest** sobre **MySQL** ([docs/14](../../docs/14-estrategia-de-testes.md), [docs/13](../../docs/13-persistencia-e-banco.md#banco-de-testes)), o ticket 00-T1 instala o Pest e reaponta o ambiente de testes para o banco `horizon_testing` (já provisionado pelo `docker/mysql/init.sql`). O reapontamento é feito no **`phpunit.xml` versionado** (com `force="true"`), e **não** em `.env.testing` — que é ignorado pelo Git e conteria credenciais; host/usuário/senha vêm do ambiente do container. Isso mantém a config de testes **reprodutível e sem segredos**. Sem esse ticket, 00-T8 não é executável.
 - **Seeders** entram nesta entrega por fazerem parte da fundação de dados de desenvolvimento ([docs/13 §5](../../docs/13-persistencia-e-banco.md#5-dados-de-desenvolvimento-e-testes), [AGENTS §7.1](../../AGENTS.md)).
