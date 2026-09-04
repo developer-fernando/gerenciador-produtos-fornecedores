@@ -1,5 +1,6 @@
-import type { Empresa, AcoesPermitidas } from '../features/empresas/types'
-import type { Paginated } from '../shared/types'
+import type { Empresa } from '../features/empresas/types'
+import type { Produto } from '../features/produtos/types'
+import type { AcoesPermitidas, Paginated } from '../shared/types'
 
 const ACOES_ATIVA: AcoesPermitidas = {
   editar: true,
@@ -21,6 +22,26 @@ export function fazerEmpresa(over: Partial<Empresa> = {}): Empresa {
     status: 'Ativo',
     excluido: false,
     produtos_count: 0,
+    created_at: '2026-09-04T12:00:00Z',
+    updated_at: '2026-09-04T12:00:00Z',
+    deleted_at: null,
+    acoes_permitidas: { ...ACOES_ATIVA },
+    ...over,
+  }
+}
+
+/** Cria um Produto de teste, permitindo sobrescrever campos. */
+export function fazerProduto(over: Partial<Produto> = {}): Produto {
+  return {
+    id: 10,
+    empresa_id: 1,
+    empresa: { id: 1, nome: 'Fornecedor Exemplo Ltda', status: 'Ativo' },
+    nome: 'Produto A',
+    descricao: 'Descrição opcional',
+    preco: '99.90',
+    codigo_interno: 'SKU-001',
+    status: 'Ativo',
+    excluido: false,
     created_at: '2026-09-04T12:00:00Z',
     updated_at: '2026-09-04T12:00:00Z',
     deleted_at: null,

@@ -1,0 +1,19 @@
+.nome {
+  font-weight: 600;
+  color: var(--horizon-preto);
+}
+
+.preco {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.codigo {
+  font-variant-numeric: tabular-nums;
+}
+
+.acoes {
+  text-align: right;
+  white-space: nowrap;
+}

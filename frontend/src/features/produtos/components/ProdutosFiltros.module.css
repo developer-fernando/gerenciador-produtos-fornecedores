@@ -1,0 +1,38 @@
+.filtros {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--esp-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--esp-4);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-1);
+}
+
+.rotulo {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+}
+
+.controle {
+  font: inherit;
+  font-size: 14px;
+  padding: var(--esp-2) var(--esp-3);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-1);
+  background: var(--cor-superficie);
+  min-width: 200px;
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  font-size: 14px;
+  padding-bottom: var(--esp-2);
+  cursor: pointer;
+}
